@@ -25,14 +25,11 @@ Table of Content
 - zk-Rollup: public, private and on-premise cloud (revenue through hourly premiere)
 - Software auxiliary: SDK for dApps and API (license to program FPGA in developer-friendly way
 
-### 3 Potentials Scenarios
+### 3 Potential Scenarios
 
 1. Permissioned networks, e.g. StarkNet 
-    - Most lucrative, but not following the trend of further decentralization
 2. Permissionless networks where provers compete on cost, e.g. Mina's Snarketplace
-    - This is a race to the bottom like Bitcoin mining. None should be making a lot of profit unless their prover efficiency is vastly superior 
 3. Permissionless networks where provers compete on latency, e.g. Polygon Hermes & Zero 
-    - This has the most potential, but may not be a dependable revenue stream, since it can go to zero if a competitor improves their latency 
 
 ## Light Client 
 
