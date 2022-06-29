@@ -1,6 +1,6 @@
 <div align="center">
   <h1 align="center">ZKP Knowledge Base</h1>
-  <p align="center">An ongoing knowledge base for ZKP domian knowledge.</p>
+  <p align="center">An ongoing knowledge base for ZKP domain knowledge.</p>
 </div>
 
 Table of Content
