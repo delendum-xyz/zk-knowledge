@@ -75,7 +75,7 @@ Table of Content
 ### Reference Reading: 
 
 - [A survey of elliptic curves for proof systems](https://eprint.iacr.org/2022/586.pdf)
-- [ECFFT](https://arxiv.org/abs/2107.08473)
+- [ECFFT: Fast Polynomial Algorithms over all Finite Fields](https://arxiv.org/abs/2107.08473)
 
 ## Efficient Signatures 
 
