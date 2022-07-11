@@ -78,7 +78,24 @@ Table of Content
 - [ECFFT](https://arxiv.org/abs/2107.08473)
 
 ## Efficient Signatures 
-- ... 
+
+### Leading Problems:
+
+- Signatures are widely used in projects and can contribute to slow computation speed and poor user experience
+- Different types of signatures depend on different field or curve arithmetic and need different speed-up methods
+
+### Suggestions:
+
+1. Use “ZK native” signatures if possible (i.e. [Picnic](https://microsoft.github.io/Picnic/))
+2. Use “native” curves if possible (i.e. [JubJub](https://github.com/zkcrypto/jubjub))
+3. In non-native curve arithmetic, for example ED25519, combine the limb products with the same weight mod 255 (in bits) 
+    1. minimize the number of splits by adding intermediate products with the same weight first. For example, when we have 2 intermediate projects of weight 2^51, we can split the sum into 52 bits 
+    2. If we have an intermediate product with weight of 2^255 or more, we can change its weight to 1 and multiply by 19, since 2^255 = 19 mod p_ed25519
+4. Use CRT related method like Aztec’s approach to have the prover give a purported product and check the identity mod p_native to ignore large limb products 
+5. Use a PLONK or STARK can cut down the cost significantly 
+6. Check [windowing](https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication) in the scalar multiplication code 
+7. Leverage the constant generator in one of the multiplications in EdDSA 
+8. [GLV Endomorphism](https://link.springer.com/chapter/10.1007/3-540-44647-8_11) can split a curve multiplication into two smaller ones in curves like secp256k1
 
 ## Proof Aggregation
 
