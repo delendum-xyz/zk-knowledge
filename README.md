@@ -10,6 +10,7 @@ Table of Content
 * [Light Client](#light-client)
 * [Regulations](#regulations)
 * [Security Vulnerability](#security-vulnerability)
+* [Proof Aggregation](#proof-aggregation)
 * [Identity](#identity)
 
 ## Hardware Acceleration
@@ -40,9 +41,9 @@ Table of Content
 
 ### Technology Highlight:
 
-- trust-minimized interaction with full nodes and do not interact directly with the blockchain
-- much lighter on resources and storage but require higher network bandwidth
-- linear time based on chain length: verify from the root to the target height (may be from a trusted height, therefore constant length)
+- Trust-minimized interaction with full nodes and do not interact directly with the blockchain
+- Much lighter on resources and storage but require higher network bandwidth
+- Linear time based on chain length: verify from the root to the target height (may be from a trusted height, therefore constant length)
 - Process overview:
     - retrieve a chain of headers instead of full block
     - verify the signatures of the intermediary signed headers and resolve disputes through checking with full nodes iteratively
@@ -54,5 +55,36 @@ Table of Content
 ## Security Vulnerability
 - ... 
 
+## Proof Aggregation
+
+### Leading Problem:
+
+- Proving n statements individually leads to n proofs. Therefore, in the absence of recursion/aggregation, the verification cost grows linearly with the number of statements proven. This is not ideal for a high-throughput blockchain
+
+### Technology Highlight:
+
+- Custom PLONK gates, the bilinearity elliptic curve pairings as used in KZG
+
+### Proof Aggregation Schemes:
+
+- Halo uses recursion to include proof number i-1 in proof i for all i and: 
+  - amortizes the verification cost of the final proof for all n proofs
+  - necessitates sequentialism: proof i cannot be generated until proof i-1 already exists
+- Plonky2 uses custom PLONK gates for the Poseidon hash function to succinctly verify FRI proofs
+  - recursive proofs on FRI proofs to prove the validity of multiple proofs in one
+  - the final recursive proof proves the validity of all tx proofs
+- SnarkPack utilizes the KZG10 polynomial commitment schemes together with the Bulletproof trick to aggregate Groth16 proofs into a single proof 
+  - can be verified in base-2 logarithmic time (in the number of proofs)
+
+### Current Research Progress:
+
+### Reference Papers:
+
+- [Proofs for Inner Pairing Products and Applications](https://eprint.iacr.org/2019/1177)
+- [SnarkPack: Practical SNARK Aggregation](https://eprint.iacr.org/2021/529)
+- [Recursive Proof Composition without a Trusted Setup](https://eprint.iacr.org/2019/1021)
+- [Fractal: Post-Quantum and Transparent Recursive Proofs from Holography](https://eprint.iacr.org/2019/1076)
+- [Fast Recursive Arguments with PLONK and FRI](https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf) 
+ 
 ## Identity
 - ... 
