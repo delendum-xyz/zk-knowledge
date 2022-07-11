@@ -8,10 +8,9 @@ Table of Content
 
 * [Hardware Acceleration](#hardware-acceleration)
 * [Light Client](#light-client)
-* [Regulations](#regulations)
-* [Security Vulnerability](#security-vulnerability)
+* [Arithmetic Fields](#Arithmetic-Fields)
+* [Efficient Signatures](#Efficient-Signatures)
 * [Proof Aggregation](#proof-aggregation)
-* [Field Selection](#field-selection)
 * [Identity](#identity)
 
 ## Hardware Acceleration
@@ -50,10 +49,35 @@ Table of Content
     - verify the signatures of the intermediary signed headers and resolve disputes through checking with full nodes iteratively
 - Superlight client: requires downloading only a logarithmic number of block headers while storing only a single block header between executions
 
-## Regulations
-- ... 
+## Arithmetic Fields
 
-## Security Vulnerability
+### Leading Problem:
+
+- Proof systems encode computation as a set of polynomial equations defined over a field. Operating on a different field will lead to gigantic circuits.
+- For pairing based SNARKs, there is a limited selection of pairing-friendly curves such as BN254 and BLS12-381.
+- FFTs require factors of two for the curves in order to make the polynomial computations practical.
+- Proof recursions require encoding arithmetic statements of a field into equations over a different field.
+- Bridge operators and roll-ups need interoperability with non-pairing friendly and not highly 2-adic curves, such as Bitcoin and Ethereum’s ECDSA over secp256k1. ([BN254 precompiled contract](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-197.md))
+- Choosing the field is a tradeoff of speed and security.
+
+### Solutions:
+
+- Brute force: decompose elements into limbs and operate on the limbs; Reduce and recompose the elements only when necessary
+    - Very expensive: may represent up to 1000X the original constraints in the circuit
+    - [xJsnark framework](https://akosba.github.io/papers/xjsnark.pdf)
+    - [gnark implementation](https://github.com/ConsenSys/gnark/blob/3d3672148b38c548b6527c5f2cfe1af5ae61a11f/std/math/nonnative/doc.go)
+- 2-chains and cycles: use matching base fields to implement one curve inside of the other (assume pairing based schemes)
+    - Non-pairing based scheme can use non-pairing friendly or hybrid cycles at a cost, such as using PCS (polynomial commitment scheme) or pasta curves with linear time.
+    - [Pasta Curves](https://electriccoin.co/blog/the-pasta-curves-for-halo-2-and-beyond/)
+    - [2-chains of elliptic curves](https://eprint.iacr.org/2021/1359.pdf)
+- Lower the requirements on the field: Polynomial Commitment Scheme (PCS) may not involve elliptic curves at all to be instantiated on arbitrary fields
+
+### Reference Reading: 
+
+- [A survey of elliptic curves for proof systems](https://eprint.iacr.org/2022/586.pdf)
+- [ECFFT](https://arxiv.org/abs/2107.08473)
+
+## Efficient Signatures 
 - ... 
 
 ## Proof Aggregation
@@ -87,9 +111,6 @@ Table of Content
 - [Fractal: Post-Quantum and Transparent Recursive Proofs from Holography](https://eprint.iacr.org/2019/1076)
 - [Fast Recursive Arguments with PLONK and FRI](https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf) 
 
-## Field Selection
-
-### Leading Problem:
 
 ## Identity
 - ... 
