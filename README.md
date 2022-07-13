@@ -32,6 +32,17 @@ Table of Content
 2. Permissionless networks where provers compete on cost, e.g. Mina's Snarketplace
 3. Permissionless networks where provers compete on latency, e.g. Polygon Hermes & Zero 
 
+### Selection metrics: 
+1. Performance: latency, throughput, and power consumption 
+2. Total cost of ownership (capital expenditures and maintenance costs) 
+3. NRE cost (non recurring engineering: onboarding difficulties) 
+4. Long-term comparative advantage: competitor performance may double in a year with the same MSPR (e.g. Intel, Nvidia GPU) 
+
+### Structure of ZKP Hardware Acceleration: 
+- Current popular structure is to combine CPU and FPGA/GPU to perform proof generation. CPU tackles single-threaded pieces at higher frequency and deal with non-determinism 
+- MSM and FFT can be parallelized, but arithmetization and commitments may be single threaded (different from the “embarrassingly parallel” PoW mining structure) 
+- Most FPGA design tools are proprietary: FPGAs have higher barrier to enter than GPU accelerations 
+
 ## Light Client 
 
 ### Leading Problem:
