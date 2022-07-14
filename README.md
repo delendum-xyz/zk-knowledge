@@ -27,7 +27,7 @@ Table of Content
 - zk-Rollup: public, private and on-premise cloud (revenue through hourly premiere)
 - Software auxiliary: SDK for dApps and API (license to program FPGA in developer-friendly way
 
-### 3 Potential Scenarios
+### 3 Potential Scenarios:
 
 1. Permissioned networks, e.g. StarkNet 
 2. Permissionless networks where provers compete on cost, e.g. Mina's Snarketplace
@@ -142,13 +142,13 @@ Table of Content
 
 ## Vulnerability
 
-### Leading Problem:
+### Problem 1
 
 - Trail of Bits is publicly disclosing critical vulnerabilities that break the soundness of multiple implementations of zero-knowledge proof systems, including PlonK and Bulletproofs
 - These vulnerabilities are caused by insecure implementations of the Fiat-Shamir transformation that allow malicious users to forge proofs for random statements
 - The vulnerabilities in one of these proof systems, Bulletproofs, stem from a mistake in the [original academic paper](https://eprint.iacr.org/2019/953.pdf), in which the authors recommend an insecure Fiat-Shamir generation
 
-### Affected Parties:
+#### Affected Parties:
 
 - The following repositories were affected:
   - [ZenGo’s zk-paillier](https://github.com/ZenGo-X/zk-paillier)
@@ -158,13 +158,34 @@ Table of Content
   - [Iden3’s SnarkJS](https://github.com/iden3/snarkjs)
   - [ConsenSys’ gnark](https://github.com/ConsenSys/gnark)
 
-### Reference Reading:
+#### Solution:
+
+- The Fiat-Shamir hash computation must include all public values from the zero-knowledge proof statement and all public values computed in the proof (i.e., all random “commitment” values)
+
+#### Reference Reading:
 
 - [Serving up zero-knowledge proofs](https://blog.trailofbits.com/2021/02/19/serving-up-zero-knowledge-proofs/)
 - [The Frozen Heart vulnerability in PlonK](https://blog.trailofbits.com/2022/04/18/the-frozen-heart-vulnerability-in-plonk/)
 - [The Frozen Heart vulnerability in Bulletproofs](https://blog.trailofbits.com/2022/04/15/the-frozen-heart-vulnerability-in-bulletproofs/)
 - [The Frozen Heart vulnerability in Girault’s proof of knowledge](https://blog.trailofbits.com/2022/04/14/the-frozen-heart-vulnerability-in-giraults-proof-of-knowledge/)
 - [Coordinated disclosure of vulnerabilities affecting Girault, Bulletproofs, and PlonK](https://blog.trailofbits.com/2022/04/13/part-1-coordinated-disclosure-of-vulnerabilities-affecting-girault-bulletproofs-and-plonk/)
+
+### Problem 2
+
+- Honest verifier zero-knowledge proofs (HVZKP) assume an honest verifier. This means that in the presence of malicious verifiers, non-interactive protocols should always be used. These also exchange fewer messages between prover and verifier
+
+#### Reference Reading:
+
+- [Using HVZKP in the wrong context](https://www.zkdocs.com/docs/zkdocs/security-of-zkps/when-to-use-hvzk/)
+- [UC non-interactive, proactive, threshold ECDSA with identifiable aborts (2020)](https://eprint.iacr.org/2021/060.pdf)
+
+### Problem 3
+
+- Insufficient range checks while emulating non-native field operations (Aztec 2.0): an attacker could prove incorrect equations hold mod p when using the BigField class.
+
+#### Reference Reading:
+
+- [Disclosure of recent vulnerabilities](https://hackmd.io/@aztec-network/disclosure-of-recent-vulnerabilities)
 
 ## Licensing
 
