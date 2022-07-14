@@ -11,6 +11,7 @@ Table of Content
 * [Arithmetic Fields](#Arithmetic-Fields)
 * [Efficient Signatures](#Efficient-Signatures)
 * [Proof Aggregation](#proof-aggregation)
+* [Vulnerability](#vulnerability)
 * [Identity](#identity)
 
 ## Hardware Acceleration
@@ -131,7 +132,7 @@ Table of Content
 
 ### Current Research Progress:
 
-### Reference Papers:
+### Reference Reading:
 
 - [Proofs for Inner Pairing Products and Applications](https://eprint.iacr.org/2019/1177)
 - [SnarkPack: Practical SNARK Aggregation](https://eprint.iacr.org/2021/529)
@@ -139,6 +140,31 @@ Table of Content
 - [Fractal: Post-Quantum and Transparent Recursive Proofs from Holography](https://eprint.iacr.org/2019/1076)
 - [Fast Recursive Arguments with PLONK and FRI](https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf) 
 
+## Vulnerability
+
+### Leading Problem:
+
+- Trail of Bits is publicly disclosing critical vulnerabilities that break the soundness of multiple implementations of zero-knowledge proof systems, including PlonK and Bulletproofs
+- These vulnerabilities are caused by insecure implementations of the Fiat-Shamir transformation that allow malicious users to forge proofs for random statements
+- The vulnerabilities in one of these proof systems, Bulletproofs, stem from a mistake in the [original academic paper](https://eprint.iacr.org/2019/953.pdf), in which the authors recommend an insecure Fiat-Shamir generation
+
+### Affected Parties:
+
+- The following repositories were affected:
+  - [ZenGo’s zk-paillier](https://github.com/ZenGo-X/zk-paillier)
+  - [SECBIT Labs’ ckb-zkp](https://github.com/sec-bit/ckb-zkp)
+  - [Adjoint, Inc.’s bulletproofs](https://github.com/adjoint-io/bulletproofs)
+  - [Dusk Network’s plonk](https://github.com/dusk-network/plonk)
+  - [Iden3’s SnarkJS](https://github.com/iden3/snarkjs)
+  - [ConsenSys’ gnark](https://github.com/ConsenSys/gnark)
+
+### Reference Reading:
+
+- [Serving up zero-knowledge proofs](https://blog.trailofbits.com/2021/02/19/serving-up-zero-knowledge-proofs/)
+- [The Frozen Heart vulnerability in PlonK](https://blog.trailofbits.com/2022/04/18/the-frozen-heart-vulnerability-in-plonk/)
+- [The Frozen Heart vulnerability in Bulletproofs](https://blog.trailofbits.com/2022/04/15/the-frozen-heart-vulnerability-in-bulletproofs/)
+- [The Frozen Heart vulnerability in Girault’s proof of knowledge](https://blog.trailofbits.com/2022/04/14/the-frozen-heart-vulnerability-in-giraults-proof-of-knowledge/)
+- [Coordinated disclosure of vulnerabilities affecting Girault, Bulletproofs, and PlonK](https://blog.trailofbits.com/2022/04/13/part-1-coordinated-disclosure-of-vulnerabilities-affecting-girault-bulletproofs-and-plonk/)
 
 ## Identity
 - ... 
