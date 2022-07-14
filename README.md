@@ -172,7 +172,8 @@ Table of Content
 
 ### Problem 2
 
-- Honest verifier zero-knowledge proofs (HVZKP) assume an honest verifier. This means that in the presence of malicious verifiers, non-interactive protocols should always be used. These also exchange fewer messages between prover and verifier
+- Honest verifier zero-knowledge proofs (HVZKP) assume an honest verifier. This means that in the presence of malicious verifiers, non-interactive protocols should always be used 
+- These also exchange fewer messages between prover and verifier. A malicious verifier can employ different attacks depending on the proof system
 
 #### Reference Reading:
 
@@ -181,7 +182,7 @@ Table of Content
 
 ### Problem 3
 
-- Insufficient range checks while emulating non-native field operations (Aztec 2.0): an attacker could prove incorrect equations hold mod p when using the BigField class.
+- Insufficient range checks while emulating non-native field operations (Aztec 2.0): an attacker could prove incorrect equations hold mod p when using the BigField class
 
 #### Reference Reading:
 
