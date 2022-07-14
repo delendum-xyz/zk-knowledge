@@ -11,12 +11,8 @@ Table of Content
 * [Arithmetic Fields](#Arithmetic-Fields)
 * [Efficient Signatures](#Efficient-Signatures)
 * [Proof Aggregation](#proof-aggregation)
-<<<<<<< HEAD
-* [Licensing](#licensing)
-=======
 * [Vulnerability](#vulnerability)
-* [Identity](#identity)
->>>>>>> deeaa4f2b560ec366323b8357864e500aecd790a
+* [Licensing](#licensing)
 
 ## Hardware Acceleration
 
