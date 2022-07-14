@@ -144,6 +144,8 @@ Table of Content
 
 ### Problem 1
 
+#### The Fiat-Shamir transformation
+
 - Trail of Bits is publicly disclosing critical vulnerabilities that break the soundness of multiple implementations of zero-knowledge proof systems, including PlonK and Bulletproofs
 - These vulnerabilities are caused by insecure implementations of the Fiat-Shamir transformation that allow malicious users to forge proofs for random statements
 - The vulnerabilities in one of these proof systems, Bulletproofs, stem from a mistake in the [original academic paper](https://eprint.iacr.org/2019/953.pdf), in which the authors recommend an insecure Fiat-Shamir generation
@@ -172,6 +174,8 @@ Table of Content
 
 ### Problem 2
 
+#### Honest verifier zero-knowledge proof
+
 - Honest verifier zero-knowledge proofs (HVZKP) assume an honest verifier. This means that in the presence of malicious verifiers, non-interactive protocols should always be used 
 - These also exchange fewer messages between prover and verifier. A malicious verifier can employ different attacks depending on the proof system
 
@@ -182,7 +186,10 @@ Table of Content
 
 ### Problem 3
 
-- Insufficient range checks while emulating non-native field operations (Aztec 2.0): an attacker could prove incorrect equations hold mod p when using the BigField class
+#### Vulnerabilities in Aztec 2.0
+
+- Lack of range constraints for the tree_index variable
+- Insufficient range checks while emulating non-native field operations
 
 #### Reference Reading:
 
