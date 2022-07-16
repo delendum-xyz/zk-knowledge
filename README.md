@@ -7,52 +7,86 @@ Table of Content
 =================
 
 * [Hardware Acceleration](#hardware-acceleration)
+  * [Leading Problem](#leading-problem)
+  * [Business Models](#business-models)
+  * [3 Potential Scenarios](#3-potential-scenarios)
+  * [Selection metrics](#selection-metrics)
+  * [Structure of ZKP Hardware Acceleration](#structure-of-zkp-hardware-acceleration)
 * [Light Client](#light-client)
-* [Arithmetic Fields](#Arithmetic-Fields)
-* [Efficient Signatures](#Efficient-Signatures)
+  * [Leading Problem](#leading-problem-1)
+  * [Technology Highlight](#technology-highlight)
+  * [Commit\-and\-proof Schemes](#commit-and-proof-schemes)
+* [Arithmetic Fields](#arithmetic-fields)
+  * [Leading Problem](#leading-problem-2)
+  * [Solutions](#solutions)
+  * [Reference Reading](#reference-reading)
+* [Efficient Signatures](#efficient-signatures)
+  * [Leading Problems](#leading-problems)
+  * [Suggestions](#suggestions)
 * [Proof Aggregation](#proof-aggregation)
+  * [Leading Problem](#leading-problem-3)
+  * [Technology Highlight](#technology-highlight-1)
+  * [Proof Aggregation Schemes](#proof-aggregation-schemes)
+  * [Current Research Progress](#current-research-progress)
+  * [Reference Reading](#reference-reading-1)
 * [Vulnerability](#vulnerability)
+  * [Problem 1](#problem-1)
+    * [The Fiat\-Shamir transformation](#the-fiat-shamir-transformation)
+    * [Affected Parties](#affected-parties)
+    * [Solution](#solution)
+    * [Reference Reading](#reference-reading-2)
+  * [Problem 2](#problem-2)
+    * [Honest verifier zero\-knowledge proof](#honest-verifier-zero-knowledge-proof)
+    * [Reference Reading](#reference-reading-3)
+  * [Problem 3](#problem-3)
+    * [Vulnerabilities in Aztec 2\.0](#vulnerabilities-in-aztec-20)
+    * [Reference Reading](#reference-reading-4)
 * [Licensing](#licensing)
-* [Verifiable Delay Functions (VDF)](#vdf)
+* [Verifiable Delay Functions (VDF)](#verifiable-delay-functions-vdf)
+  * [Leading Problems](#leading-problems-1)
+  * [VDF Requirements](#vdf-requirements)
+  * [Techniques](#techniques)
+  * [Applications](#applications)
+  * [Great resources](#great-resources)
 
 ## Hardware Acceleration
 
-### Leading Problem:
+### Leading Problem
 
 - Proof generation is time-consuming, high-latency, and not efficient enough on traditional CPUs
 - As L2 rollups and other applications of ZKP grow, we need to consider hardware as a potential breakthrough of performance improvement
 
-### Business Models:
+### Business Models
 
 - zk-mining: Plug-n-play FPGA accelerator cards (revenue through hardware sale)
 - zk-Rollup: public, private and on-premise cloud (revenue through hourly premiere)
 - Software auxiliary: SDK for dApps and API (license to program FPGA in developer-friendly way
 
-### 3 Potential Scenarios:
+### 3 Potential Scenarios
 
 1. Permissioned networks, e.g. StarkNet 
 2. Permissionless networks where provers compete on cost, e.g. Mina's Snarketplace
 3. Permissionless networks where provers compete on latency, e.g. Polygon Hermes & Zero 
 
-### Selection metrics: 
+### Selection metrics
 1. Performance: latency, throughput, and power consumption 
 2. Total cost of ownership (capital expenditures and maintenance costs) 
 3. NRE cost (non recurring engineering: onboarding difficulties) 
 4. Long-term comparative advantage: competitor performance may double in a year with the same MSPR (e.g. Intel, Nvidia GPU) 
 
-### Structure of ZKP Hardware Acceleration: 
+### Structure of ZKP Hardware Acceleration
 - Current popular structure is to combine CPU and FPGA/GPU to perform proof generation. CPU tackles single-threaded pieces at higher frequency and deal with non-determinism 
 - MSM and FFT can be parallelized, but arithmetization and commitments may be single threaded (different from the “embarrassingly parallel” PoW mining structure) 
 - Most FPGA design tools are proprietary: FPGAs have higher barrier to enter than GPU accelerations 
 
 ## Light Client 
 
-### Leading Problem:
+### Leading Problem
 
 - Full node is resource-draining: downloading and verifying the whole chain of blocks takes time and resources
 - Not retail friendly to be on mobile and perform quick actions like sending transactions and verifying balances
 
-### Technology Highlight:
+### Technology Highlight
 
 - Trust-minimized interaction with full nodes and do not interact directly with the blockchain
 - Much lighter on resources and storage but require higher network bandwidth
@@ -78,7 +112,7 @@ Table of Content
 
 ## Arithmetic Fields
 
-### Leading Problem:
+### Leading Problem
 
 - Proof systems encode computation as a set of polynomial equations defined over a field. Operating on a different field will lead to gigantic circuits.
 - For pairing based SNARKs, there is a limited selection of pairing-friendly curves such as BN254 and BLS12-381.
@@ -87,7 +121,7 @@ Table of Content
 - Bridge operators and roll-ups need interoperability with non-pairing friendly and not highly 2-adic curves, such as Bitcoin and Ethereum’s ECDSA over secp256k1. ([BN254 precompiled contract](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-197.md))
 - Choosing the field is a tradeoff of speed and security.
 
-### Solutions:
+### Solutions
 
 - Brute force: decompose elements into limbs and operate on the limbs; Reduce and recompose the elements only when necessary
     - Very expensive: may represent up to 1000X the original constraints in the circuit
@@ -99,19 +133,19 @@ Table of Content
     - [2-chains of elliptic curves](https://eprint.iacr.org/2021/1359.pdf)
 - Lower the requirements on the field: Polynomial Commitment Scheme (PCS) may not involve elliptic curves at all to be instantiated on arbitrary fields
 
-### Reference Reading: 
+### Reference Reading
 
 - [A survey of elliptic curves for proof systems](https://eprint.iacr.org/2022/586.pdf)
 - [ECFFT: Fast Polynomial Algorithms over all Finite Fields](https://arxiv.org/abs/2107.08473)
 
 ## Efficient Signatures 
 
-### Leading Problems:
+### Leading Problems
 
 - Signatures are widely used in projects and can contribute to slow computation speed and poor user experience
 - Different types of signatures depend on different field or curve arithmetic and need different speed-up methods
 
-### Suggestions:
+### Suggestions
 
 1. Use “ZK native” signatures if possible (i.e. [Picnic](https://microsoft.github.io/Picnic/))
 2. Use “native” curves if possible (i.e. [JubJub](https://github.com/zkcrypto/jubjub))
@@ -126,15 +160,15 @@ Table of Content
 
 ## Proof Aggregation
 
-### Leading Problem:
+### Leading Problem
 
 - Proving n statements individually leads to n proofs. Therefore, in the absence of recursion/aggregation, the verification cost grows linearly with the number of statements proven. This is not ideal for a high-throughput blockchain
 
-### Technology Highlight:
+### Technology Highlight
 
 - Custom PLONK gates, the bilinearity elliptic curve pairings as used in KZG
 
-### Proof Aggregation Schemes:
+### Proof Aggregation Schemes
 
 - Halo uses recursion to include proof number i-1 in proof i for all i and: 
   - amortizes the verification cost of the final proof for all n proofs
@@ -145,9 +179,9 @@ Table of Content
 - SnarkPack utilizes the KZG10 polynomial commitment schemes together with the Bulletproof trick to aggregate Groth16 proofs into a single proof 
   - can be verified in base-2 logarithmic time (in the number of proofs)
 
-### Current Research Progress:
+### Current Research Progress
 
-### Reference Reading:
+### Reference Reading
 
 - [Proofs for Inner Pairing Products and Applications](https://eprint.iacr.org/2019/1177)
 - [SnarkPack: Practical SNARK Aggregation](https://eprint.iacr.org/2021/529)
@@ -165,7 +199,7 @@ Table of Content
 - These vulnerabilities are caused by insecure implementations of the Fiat-Shamir transformation that allow malicious users to forge proofs for random statements
 - The vulnerabilities in one of these proof systems, Bulletproofs, stem from a mistake in the [original academic paper](https://eprint.iacr.org/2019/953.pdf), in which the authors recommend an insecure Fiat-Shamir generation
 
-#### Affected Parties:
+#### Affected Parties
 
 - The following repositories were affected:
   - [ZenGo’s zk-paillier](https://github.com/ZenGo-X/zk-paillier)
@@ -175,11 +209,11 @@ Table of Content
   - [Iden3’s SnarkJS](https://github.com/iden3/snarkjs)
   - [ConsenSys’ gnark](https://github.com/ConsenSys/gnark)
 
-#### Solution:
+#### Solution
 
 - The Fiat-Shamir hash computation must include all public values from the zero-knowledge proof statement and all public values computed in the proof (i.e., all random “commitment” values)
 
-#### Reference Reading:
+#### Reference Reading
 
 - [Serving up zero-knowledge proofs](https://blog.trailofbits.com/2021/02/19/serving-up-zero-knowledge-proofs/)
 - [The Frozen Heart vulnerability in PlonK](https://blog.trailofbits.com/2022/04/18/the-frozen-heart-vulnerability-in-plonk/)
@@ -194,7 +228,7 @@ Table of Content
 - Honest verifier zero-knowledge proofs (HVZKP) assume an honest verifier. This means that in the presence of malicious verifiers, non-interactive protocols should always be used 
 - These also exchange fewer messages between prover and verifier. A malicious verifier can employ different attacks depending on the proof system
 
-#### Reference Reading:
+#### Reference Reading
 
 - [Using HVZKP in the wrong context](https://www.zkdocs.com/docs/zkdocs/security-of-zkps/when-to-use-hvzk/)
 - [UC non-interactive, proactive, threshold ECDSA with identifiable aborts (2020)](https://eprint.iacr.org/2021/060.pdf)
@@ -206,7 +240,7 @@ Table of Content
 - Lack of range constraints for the tree_index variable
 - Insufficient range checks while emulating non-native field operations
 
-#### Reference Reading:
+#### Reference Reading
 
 - [Disclosure of recent vulnerabilities](https://hackmd.io/@aztec-network/disclosure-of-recent-vulnerabilities)
 
@@ -225,27 +259,27 @@ Table of Content
 
 ## Verifiable Delay Functions (VDF)
 
-### Leading Problems:
+### Leading Problems
 
 1. randomness is hard to generate on chain due to non-determinism, but we still want to be able to verify the randomness 
 2. fairness of leader election is hard to ensure as the attacker may manipulate the randomness in election 
 
-### VDF Requirements:
+### VDF Requirements
 
 1. Anyone has to compute **sequential** steps to distinguish the output. No one can have a speed advantage. 
 2. The result has to be **efficiently verifiable** in a short time (typically in log(t))
 
-### Techniques:
+### Techniques
 
 - injective rational maps (First attempt in [original VDF paper](https://eprint.iacr.org/2018/601.pdf)): “weak VDF” requires large parallel processing
 - Finite group of unknown order ([Pietrazak](https://eprint.iacr.org/2018/627.pdf) and [Wesolowski](https://eprint.iacr.org/2018/623.pdf)): use a trapdoor or Rivest-Shamir-Wagner time-lock puzzle
 
-### Applications:
+### Applications
 
 - Chia blockchain: use VDF for consensus algorithms
 - Protocol Labs + Ethereum Foundation: co-funding grants for research of viability of building optimized ASICs for running a VDF
 
-### Great resources:
+### Great resources
 
 - [https://vdfresearch.org/](https://vdfresearch.org/)
 - [https://blog.trailofbits.com/2018/10/12/introduction-to-verifiable-delay-functions-vdfs/](https://blog.trailofbits.com/2018/10/12/introduction-to-verifiable-delay-functions-vdfs/)
