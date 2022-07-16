@@ -13,6 +13,7 @@ Table of Content
 * [Proof Aggregation](#proof-aggregation)
 * [Vulnerability](#vulnerability)
 * [Licensing](#licensing)
+* [VDF](#vdf)
 
 ## Hardware Acceleration
 
@@ -221,3 +222,30 @@ Table of Content
 | BSL                                  | Non-production use, distribution, modification, private use         | Disclose source, license and copyright notice                                                                                  | [Uniswap v3](https://github.com/Uniswap/v3-core/blob/main/LICENSE), Aave                                                                                                                                                                                                                                    |
 | BOSL (Bootstrap Open Source License) | Commercial use, distribution, modification, private use             | Open-source the improvements, improvements available under BOSL after 12 months, disclose source, license and copyright notice | Zcash ([halo2’s](https://github.com/zcash/orchard/blob/main/LICENSE-BOSL) initial launch)                                                                                                                                                                                                                   |
 | Polaris Prover License               | Non-commercial use                                                  | No transfer of rights, state changes                                                                                           | [StarkWare Prover ](https://starkware.co/starkware-polaris-prover-license/)                                                                                                                                                                                                                                 |
+
+## VDF 
+
+### Leading Problems:
+
+1. randomness is hard to generate on chain due to non-determinism, but we still want to be able to verify the randomness 
+2. fairness of leader election is hard to ensure as the attacker may manipulate the randomness in election 
+
+### VDF Requirements:
+
+1. Anyone has to compute **sequential** steps to distinguish the output. No one can have a speed advantage. 
+2. The result has to be **efficiently verifiable** in a short time (typically in log(t))
+
+### Techniques:
+
+- injective rational maps (First attempt in [original VDF paper](https://eprint.iacr.org/2018/601.pdf)): “weak VDF” requires large parallel processing
+- Finite group of unknown order ([Pietrazak](https://eprint.iacr.org/2018/627.pdf) and [Wesolowski](https://eprint.iacr.org/2018/623.pdf)): use a trapdoor or Rivest-Shamir-Wagner time-lock puzzle
+
+### Applications:
+
+- Chia blockchain: use VDF for consensus algorithms
+- Protocol Labs + Ethereum Foundation: co-funding grants for research of viability of building optimized ASICs for running a VDF
+
+### Great resources:
+
+- [https://vdfresearch.org/](https://vdfresearch.org/)
+- [https://blog.trailofbits.com/2018/10/12/introduction-to-verifiable-delay-functions-vdfs/](https://blog.trailofbits.com/2018/10/12/introduction-to-verifiable-delay-functions-vdfs/)
