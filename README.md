@@ -47,7 +47,7 @@ Table of Content
   * [VDF Requirements](#vdf-requirements)
   * [Techniques](#techniques)
   * [Applications](#applications)
-  * [Great resources](#great-resources)
+  * [Great Resources](#great-resources)
 
 ## Hardware Acceleration
 
@@ -279,7 +279,7 @@ Table of Content
 - Chia blockchain: use VDF for consensus algorithms
 - Protocol Labs + Ethereum Foundation: co-funding grants for research of viability of building optimized ASICs for running a VDF
 
-### Great resources
+### Great Resources
 
 - [https://vdfresearch.org/](https://vdfresearch.org/)
 - [https://blog.trailofbits.com/2018/10/12/introduction-to-verifiable-delay-functions-vdfs/](https://blog.trailofbits.com/2018/10/12/introduction-to-verifiable-delay-functions-vdfs/)
