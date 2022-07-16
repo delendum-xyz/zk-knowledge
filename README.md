@@ -13,7 +13,7 @@ Table of Content
 * [Proof Aggregation](#proof-aggregation)
 * [Vulnerability](#vulnerability)
 * [Licensing](#licensing)
-* [VDF](#vdf)
+* [Verifiable Delay Functions (VDF)](#vdf)
 
 ## Hardware Acceleration
 
@@ -223,7 +223,7 @@ Table of Content
 | BOSL (Bootstrap Open Source License) | Commercial use, distribution, modification, private use             | Open-source the improvements, improvements available under BOSL after 12 months, disclose source, license and copyright notice | Zcash ([halo2’s](https://github.com/zcash/orchard/blob/main/LICENSE-BOSL) initial launch)                                                                                                                                                                                                                   |
 | Polaris Prover License               | Non-commercial use                                                  | No transfer of rights, state changes                                                                                           | [StarkWare Prover ](https://starkware.co/starkware-polaris-prover-license/)                                                                                                                                                                                                                                 |
 
-## VDF 
+## Verifiable Delay Functions (VDF)
 
 ### Leading Problems:
 
