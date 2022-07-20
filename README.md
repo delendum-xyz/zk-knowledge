@@ -189,17 +189,30 @@ Table of Content
 - [Fractal: Post-Quantum and Transparent Recursive Proofs from Holography](https://eprint.iacr.org/2019/1076)
 - [Fast Recursive Arguments with PLONK and FRI](https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf) 
 
-## Vulnerability
+## Vulnerabilities
+Zero-knowledge proof systems require the following properties to be defined as a zero-knowledge proof:
+- Completeness: If a statement is true, an honest verifier will be convinced of this by an honest prover.
+- Soundness: If a statement is false, then there is a negligible probably that a cheating prover can prove the validity of the statement to an honest verifier.
+- Zero-knowledge property: If a statement is true, then the verifier learns nothing about the statement other than the fact that the statement is true.
 
-### Problem 1
+As such, if one of the above properties are broken, we no longer have a valid zero-knowledge proof system.
+This section organizes known vulnerabilities in implementations of zero-knowledge proof systems by the above properties and an additional section mainly pertaining to more general cryptographic vulnerabilities.
+
+### Vulnerabilities that break completeness
+
+[Correctness of G_k, generated in the ownership proof, is not enforced in the balance proof in Lelantus](https://firo.org/about/research/papers/lelantus-cryptography-audit-abdk.pdf)
+
+### Vulnerabilities that break soundness
 
 #### The Fiat-Shamir transformation
 
 - Trail of Bits is publicly disclosing critical vulnerabilities that break the soundness of multiple implementations of zero-knowledge proof systems, including PlonK and Bulletproofs
 - These vulnerabilities are caused by insecure implementations of the Fiat-Shamir transformation that allow malicious users to forge proofs for random statements
 - The vulnerabilities in one of these proof systems, Bulletproofs, stem from a mistake in the [original academic paper](https://eprint.iacr.org/2019/953.pdf), in which the authors recommend an insecure Fiat-Shamir generation
+- Addendum: Challenges should also be generated in such a way they are independently random.
+   - See [Fiat-Shamir challenges in range_prover are not always independently random](https://github.com/firoorg/firo/issues/890)
 
-#### Affected Parties
+##### Affected Parties
 
 - The following repositories were affected:
   - [ZenGo’s zk-paillier](https://github.com/ZenGo-X/zk-paillier)
@@ -209,11 +222,11 @@ Table of Content
   - [Iden3’s SnarkJS](https://github.com/iden3/snarkjs)
   - [ConsenSys’ gnark](https://github.com/ConsenSys/gnark)
 
-#### Solution
+##### Solution
 
 - The Fiat-Shamir hash computation must include all public values from the zero-knowledge proof statement and all public values computed in the proof (i.e., all random “commitment” values)
 
-#### Reference Reading
+##### Reference Reading
 
 - [Serving up zero-knowledge proofs](https://blog.trailofbits.com/2021/02/19/serving-up-zero-knowledge-proofs/)
 - [The Frozen Heart vulnerability in PlonK](https://blog.trailofbits.com/2022/04/18/the-frozen-heart-vulnerability-in-plonk/)
@@ -221,28 +234,31 @@ Table of Content
 - [The Frozen Heart vulnerability in Girault’s proof of knowledge](https://blog.trailofbits.com/2022/04/14/the-frozen-heart-vulnerability-in-giraults-proof-of-knowledge/)
 - [Coordinated disclosure of vulnerabilities affecting Girault, Bulletproofs, and PlonK](https://blog.trailofbits.com/2022/04/13/part-1-coordinated-disclosure-of-vulnerabilities-affecting-girault-bulletproofs-and-plonk/)
 
-### Problem 2
+#### Creating Fake ZK-SNARK proofs
+In certain ZK-SNARK protocols, a trusted setup ceremony is devised in order to produce parameters for use in the proof generation of a particular statement. However, there are extra parameters, deemed as toxic waste, that meant to be destroyed after the ceremony has been performed. If  the toxic waste is not properly disposed of, a cheating prover can generate fake proofs and mislead and honest verifier.
+
+-[Creating fake ZK-SNARK proofs](https://medium.com/qed-it/how-toxic-is-the-waste-in-a-zksnark-trusted-setup-9b250d59bdb4)
+-[Zcash Counterfeit Vulnerability](https://nvd.nist.gov/vuln/detail/cve-2019-7167)
+
+### Vulnerabilities that break the zero-knowledge property
 
 #### Honest verifier zero-knowledge proof
 
 - Honest verifier zero-knowledge proofs (HVZKP) assume an honest verifier. This means that in the presence of malicious verifiers, non-interactive protocols should always be used 
 - These also exchange fewer messages between prover and verifier. A malicious verifier can employ different attacks depending on the proof system
 
-#### Reference Reading
+##### Reference Reading
 
 - [Using HVZKP in the wrong context](https://www.zkdocs.com/docs/zkdocs/security-of-zkps/when-to-use-hvzk/)
 - [UC non-interactive, proactive, threshold ECDSA with identifiable aborts (2020)](https://eprint.iacr.org/2021/060.pdf)
 
-### Problem 3
+### General Vulnerabilities affecting zero-knowledge enabled systems
 
 #### Vulnerabilities in Aztec 2.0
+[Disclosure of recent vulnerabilities in Aztec 2.0](https://hackmd.io/@aztec-network/disclosure-of-recent-vulnerabilities)
+[SELFDESTRUCT main via delegatecall in ZkSync](https://docs.zksync.io/dev/security/ZKSYNC1-2021-01/)
 
-- Lack of range constraints for the tree_index variable
-- Insufficient range checks while emulating non-native field operations
 
-#### Reference Reading
-
-- [Disclosure of recent vulnerabilities](https://hackmd.io/@aztec-network/disclosure-of-recent-vulnerabilities)
 
 ## Licensing
 
