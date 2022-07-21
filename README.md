@@ -30,17 +30,13 @@ Table of Content
   * [Current Research Progress](#current-research-progress)
   * [Reference Reading](#reference-reading-1)
 * [Vulnerability](#vulnerability)
-  * [Problem 1](#problem-1)
-    * [The Fiat\-Shamir transformation](#the-fiat-shamir-transformation)
-    * [Affected Parties](#affected-parties)
-    * [Solution](#solution)
-    * [Reference Reading](#reference-reading-2)
-  * [Problem 2](#problem-2)
-    * [Honest verifier zero\-knowledge proof](#honest-verifier-zero-knowledge-proof)
-    * [Reference Reading](#reference-reading-3)
-  * [Problem 3](#problem-3)
-    * [Vulnerabilities in Aztec 2\.0](#vulnerabilities-in-aztec-20)
-    * [Reference Reading](#reference-reading-4)
+  * [Vulnerabilities that break completeness](#vulnerabilities-that-break-completeness)
+  * [Vulnerabilities that break soundness](#vulnerabilities-that-break-soundness)
+    * [The Fiat-Shamir transformation](#the-fiat--shamir-transformation)
+    * [Creating Fake ZK-SNARK proofs](#creating-fake-ZK--SNARK-proofs)
+  * [Vulnerabilities that break the zero-knowledge property](#vulnerabilities-that-break-the-zero--knowledge-property)
+    * [Honest verifier zero-knowledge proof](#honest-verifier-zero--knowledge-proof)
+  * [General Vulnerabilities affecting zero-knowledge enabled systems](#General-Vulnerabilities-affecting-zero--knowledge-enabled-systems)
 * [Licensing](#licensing)
 * [Verifiable Delay Functions (VDF)](#verifiable-delay-functions-vdf)
   * [Leading Problems](#leading-problems-1)
@@ -190,17 +186,19 @@ Table of Content
 - [Fast Recursive Arguments with PLONK and FRI](https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf) 
 
 ## Vulnerabilities
-Zero-knowledge proof systems require the following properties to be defined as a zero-knowledge proof:
-- Completeness: If a statement is true, an honest verifier will be convinced of this by an honest prover.
-- Soundness: If a statement is false, then there is a negligible probably that a cheating prover can prove the validity of the statement to an honest verifier.
-- Zero-knowledge property: If a statement is true, then the verifier learns nothing about the statement other than the fact that the statement is true.
 
-As such, if one of the above properties are broken, we no longer have a valid zero-knowledge proof system.
-This section organizes known vulnerabilities in implementations of zero-knowledge proof systems by the above properties and an additional section mainly pertaining to more general cryptographic vulnerabilities.
+- Zero-knowledge proof systems require the following properties to be defined as a zero-knowledge proof:
+  - Completeness: If a statement is true, an honest verifier will be convinced of this by an honest prover
+  - Soundness: If a statement is false, then there is a negligible probably that a cheating prover can prove the validity of the statement to an honest verifier
+  - Zero-knowledge property: If a statement is true, then the verifier learns nothing about the statement other than the fact that the statement is true
+
+- As such, if one of the above properties are broken, we no longer have a valid zero-knowledge proof system
+- This section organizes known vulnerabilities in implementations of zero-knowledge proof systems by the above properties and an additional section mainly pertaining to more general cryptographic vulnerabilities
 
 ### Vulnerabilities that break completeness
 
-[Correctness of G_k, generated in the ownership proof, is not enforced in the balance proof in Lelantus](https://firo.org/about/research/papers/lelantus-cryptography-audit-abdk.pdf)
+- Correctness of G_k, generated in the ownership proof, is not enforced in the balance proof in Lelantus
+  - [Lelantus Cryptographic Audit](https://firo.org/about/research/papers/lelantus-cryptography-audit-abdk.pdf)
 
 ### Vulnerabilities that break soundness
 
@@ -235,10 +233,14 @@ This section organizes known vulnerabilities in implementations of zero-knowledg
 - [Coordinated disclosure of vulnerabilities affecting Girault, Bulletproofs, and PlonK](https://blog.trailofbits.com/2022/04/13/part-1-coordinated-disclosure-of-vulnerabilities-affecting-girault-bulletproofs-and-plonk/)
 
 #### Creating Fake ZK-SNARK proofs
-In certain ZK-SNARK protocols, a trusted setup ceremony is devised in order to produce parameters for use in the proof generation of a particular statement. However, there are extra parameters, deemed as toxic waste, that meant to be destroyed after the ceremony has been performed. If  the toxic waste is not properly disposed of, a cheating prover can generate fake proofs and mislead and honest verifier.
 
--[Creating fake ZK-SNARK proofs](https://medium.com/qed-it/how-toxic-is-the-waste-in-a-zksnark-trusted-setup-9b250d59bdb4)
--[Zcash Counterfeit Vulnerability](https://nvd.nist.gov/vuln/detail/cve-2019-7167)
+- In certain ZK-SNARK protocols, a trusted setup ceremony is devised in order to produce parameters for use in the proof generation of a particular statement
+- However, there are extra parameters, deemed as toxic waste, that meant to be destroyed after the ceremony has been performed. If  the toxic waste is not properly disposed of, a cheating prover can generate fake proofs and mislead and honest verifier
+
+##### Reference Reading
+
+- [Creating fake ZK-SNARK proofs](https://medium.com/qed-it/how-toxic-is-the-waste-in-a-zksnark-trusted-setup-9b250d59bdb4)
+- [Zcash Counterfeit Vulnerability](https://nvd.nist.gov/vuln/detail/cve-2019-7167)
 
 ### Vulnerabilities that break the zero-knowledge property
 
@@ -254,10 +256,10 @@ In certain ZK-SNARK protocols, a trusted setup ceremony is devised in order to p
 
 ### General Vulnerabilities affecting zero-knowledge enabled systems
 
-#### Vulnerabilities in Aztec 2.0
-[Disclosure of recent vulnerabilities in Aztec 2.0](https://hackmd.io/@aztec-network/disclosure-of-recent-vulnerabilities)
-[SELFDESTRUCT main via delegatecall in ZkSync](https://docs.zksync.io/dev/security/ZKSYNC1-2021-01/)
+#### Reference Reading
 
+- [Disclosure of recent vulnerabilities in Aztec 2.0](https://hackmd.io/@aztec-network/disclosure-of-recent-vulnerabilities)
+- [SELFDESTRUCT main via delegatecall in ZkSync](https://docs.zksync.io/dev/security/ZKSYNC1-2021-01/)
 
 
 ## Licensing
