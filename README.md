@@ -154,8 +154,8 @@ Table of Content
 #### Bignum techniques
 
 - For example, if we use standard multiplication algorithms for ED25519 field multiplication and range check each of the 5x5 limb products, we can reduce the cost by:
-  - Since 2^255 = 19 mod p_ed25519, you could combine limb products with the same weight mod 255 (in bits). The combined products will have a few more bits but it should be cheaper overall
-  - If we split each intermediate product into bits and use binary adders, we can minimize the number of splits by adding intermediate products with the same weight "natively" first. For example, if two intermediate products have a weight of 2^51 (the base), we can split the sum into 52 bits, which is just over half the cost of doing two 51-bit splits. When we have an intermediate product with a weight of 2^255 or more, we can change its weight to 1 and multiply it by 19, since 2^255 = 19 mod p_ed25519. That could help to further reduce the number of splits
+- Since 2^255 = 19 mod p_ed25519, you could combine limb products with the same weight mod 255 (in bits). The combined products will have a few more bits but it should be cheaper overall
+- If we split each intermediate product into bits and use binary adders, we can minimize the number of splits by adding intermediate products with the same weight "natively" first. For example, if two intermediate products have a weight of 2^51 (the base), we can split the sum into 52 bits, which is just over half the cost of doing two 51-bit splits. When we have an intermediate product with a weight of 2^255 or more, we can change its weight to 1 and multiply it by 19, since 2^255 = 19 mod p_ed25519. That could help to further reduce the number of splits
 
 ##### CRT inspired methods
 
@@ -174,8 +174,8 @@ Table of Content
 #### Conventional optimizations
 
 - In the scalar multiplication code, we would suggest looking into windowing
-- We could also leverage the fact that in EdDSA, one of the multiplications is by a constant generator
-- Some curves like secp256k1 support the [GLV endomorphism](https://link.springer.com/chapter/10.1007/3-540-44647-8_11), which allows us to split a curve multiplication into two smaller ones
+- If we’re checking an ECDSA or EdDSA signature, we can leverage the fact that one of the multiplications has a fixed base, enabling various preprocessing tricks
+- Curve-specific: secp256k1 supports the [GLV endomorphism](https://link.springer.com/chapter/10.1007/3-540-44647-8_11), for example, which allows us to split a curve multiplication into two smaller ones, opening the door to multi-scalar multiplication methods such as Yao’s
 
 ### Suggestions
 
