@@ -41,6 +41,7 @@ Table of Content
   * [Techniques](#techniques)
   * [Applications](#applications)
   * [Great Resources](#great-resources)
+* [Formal Verification](#formal-verification)
 
 ## Hardware Acceleration
 
@@ -337,3 +338,14 @@ Table of Content
 
 - [https://vdfresearch.org/](https://vdfresearch.org/)
 - [https://blog.trailofbits.com/2018/10/12/introduction-to-verifiable-delay-functions-vdfs/](https://blog.trailofbits.com/2018/10/12/introduction-to-verifiable-delay-functions-vdfs/)
+
+## Formal Verification
+
+### Leading Problems
+
+- 
+
+### Formal Verification for ZK Circuits
+
+
+### 
