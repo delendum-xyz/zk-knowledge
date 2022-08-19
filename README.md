@@ -341,11 +341,64 @@ Table of Content
 
 ## Formal Verification
 
-### Leading Problems
+### Leading Problem
 
-- 
+How do we prove, not in a probabilistic sense, but with certainty, that executable implementations of probabilistic proof systems have the intended characteristics, such as soundness, completeness, and zero knowledge?
+
+### Techniques
+
+To prove a general statement with certainty, it must be a purely mathematical statement which can be known to be true by reasoning alone, without needing to perform any tests. The reasoning must start from consistent assumptions (axioms) and proceed by truth-preserving inferences.
+
+A proof theory codifies a consistent set of rules for performing truth-preserving inference. Proof theories can be used to construct proofs manually, with pencil and paper. Computer programs called proof assistants reduce labor and mitigate the risk of human error by helping the user to construct machine-checkable proofs.
+
+To use a proof assistant to prove a statement about a program, there are two main approaches:
+
+1. Write the program in the proof assistant language and apply the proving facilities to the program directly.
+
+2. Use a transpiler to turn a program written in another language into an object which the proof assistant can reason about.
+
+Of these approaches, (1) seems preferable for the greater confidence provided by the proof being about exactly the program being executed, as opposed to output of a transpiler which is assumed to have the same meaning as the source program. What motivates approach (2) is when (for whatever reason) the proof assistant language is not suitable as a language for developing the application in.
+
+There are also ways to prove a statement about a program without (directly) using a proof assistant:
+
+3. Use a verifying compiler, which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verifying compiler.
+
+4. Use an automatic proof search algorithm, which takes as input statements to be proven and outputs proofs of those statements if those statements are true and the proof search algorithm finds proofs.
+
+Both of these approaches have limitations.
+
+A verifying compiler is limited in what statements it can prove about the resulting program: typically, just that the resulting program has the same meaning or behavior as the source program.
+
+An automatic proof search algorithm is limited in what statements it can prove by the sophistication of the algorithm and the computational power applied to it. Also, due to Gödel's incompleteness theorem, there cannot exist a proof search algorithm which would find a proof of any given true statement.
 
 ### Formal Verification for ZK Circuits
 
+Formal verification for probabilistic proof systems, inclusive of ZK proof systems, encompasses two main problem spaces:
 
-### 
+1. Proving the intended properties of a general-purpose proving system, such as soundness, completeness, and zero knowledge.
+
+2. Proving the intended properties of an application-specific proving system, such as that it proves the intended statements.
+
+Let us assume that an application-specific proving system is an application of a general-purpose proving system. Then we can break down the problem of formally verifying the application-specific proving system into the problem of verifying the underlying general-purpose system and the problem of verifying that the general-purpose system is being applied correctly.
+
+If the mechanics of an application-specific proving system are specified in the form of a circuit, then the application-specific problem can be understood as the problem of circuit verification.
+
+Denotational design provides a helpful way of thinking about both problem spaces (general and application-specific). The circuit denotes a set: namely, the set of public inputs for which the circuit is satisfiable. The goal of application specific circuit verification is to prove that the circuit denotes the intended relation. The goal of general purpose proving system verification is to prove that it has the intended properties with respect to the denotational semantics of circuits:
+
+1. Soundness means that if the verifier accepts a proof, then with high probability, the public input used to generate the proof (i.e., the statement being proven) is in the set denoted by the circuit (i.e., the statement is true).
+
+2. Completeness means that if a public input (i.e., a statement) is in the set denoted by the circuit (i.e., the statement is true), then the proving algorithm successfully outputs a proof which the verifier accepts.
+
+If you know that your circuit denotes the relation you intend, and you know that your general purpose proof system is sound and complete in the above senses, then you know that your application-specific proving system (i.e., the circuit plus the general proof system) has the intended soundness and completeness properties for that application.
+
+This suggests that, given a formally verified general-purpose proving system, and a verifying compiler from statements to circuits, one can solve the problem of proving correctness of application-specific proving systems without application-specific correctness proofs.
+
+Suppose one can write the statement to be expressed by a circuit in a machine-readable, human-readable notation, where it is self-evident that the statement being written has the intended meaning or denotation. Suppose further that one has a verifying compiler which turns that statement into a circuit which provably has the same denotation as the source statement. Suppose further that that circuit can be executed on a formally verified general-purpose probabilistic proving system. Then one can generate formally verified application-specific probabilistic proving systems without any additional proof writing for an additional application. This seems like a promising way forward towards a sustainable and cost effective approach to formal verification for ZK circuits.
+
+### Efficient execution of formally verified programs
+
+Efficient execution of formally verified programs is a largely unsolved problem. The proof assistants [Coq](https://coq.inria.fr/) and [Agda](https://github.com/agda/agda/) do not provide for compilation of programs written in those languages to an efficiently executable form. The language [ATS](http://www.ats-lang.org/) provides proof facilities and purports to allow for programming with the efficiency of C and C++.
+
+In the context of modern computing, most computationally intensive tasks deal with vector math and other embarassingly parallel problems which are done most efficiently on specialized hardware such as GPUs, FPGAs, and ASICs. This is generally true of the problem of constructing proofs in probabilistic proof systems. Provers for these proof systems would be most efficient if implemented on specialized hardware, but in practice, they are usually implemented on CPUs, due to the greater ease of programming on CPUs and the greater availability of those skill sets in the labor market.
+
+For creating a formally verified implementation of a probabilistic proof system which executes efficiently, it seems that the right goal is not to optimize for speed of execution on a CPU, but to target specialized hardware such as FPGAs, GPUs, or ASICs. Unfortunately, tools for compiling formally verified programs to run on FPGAs, GPUs, or ASICs are more or less nonexistent as far as we know.
