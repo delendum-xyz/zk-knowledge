@@ -355,8 +355,8 @@ Table of Content
 
 - To use a proof assistant to prove a statement about a program, there are two main approaches:
 
-  1. Write the program in the proof assistant language and apply the proving facilities to the program directly
-  2. Use a transpiler to turn a program written in another language into an object which the proof assistant can reason about
+ 1. Write the program in the proof assistant language and apply the proving facilities to the program directly
+ 2. Use a transpiler to turn a program written in another language into an object which the proof assistant can reason about
 
 - Of these approaches, (1) seems preferable for the greater confidence provided by the proof being about exactly the program being executed, as opposed to output of a transpiler which is assumed to have the same meaning as the source program. What motivates approach (2) is when (for whatever reason) the proof assistant language is not suitable as a language for developing the application in
 
@@ -364,8 +364,8 @@ Table of Content
 
 - There are also ways to prove a statement about a program without (directly) using a proof assistant:
 
-  3. Use a verifying compiler, which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verifying compiler
-  4. Use an automatic proof search algorithm, which takes as input statements to be proven and outputs proofs of those statements if those statements are true and the proof search algorithm finds proofs
+ 3. Use a verifying compiler, which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verifying compiler
+ 4. Use an automatic proof search algorithm, which takes as input statements to be proven and outputs proofs of those statements if those statements are true and the proof search algorithm finds proofs
 
 - Both of these approaches have limitations:
 
@@ -377,8 +377,8 @@ Table of Content
 
 - Formal verification for probabilistic proof systems, inclusive of ZK proof systems, encompasses two main problem spaces:
 
-  1. Proving the intended properties of a general-purpose proving system, such as soundness, completeness, and zero knowledge.
-  2. Proving the intended properties of an application-specific proving system, such as that it proves the intended statements.
+ 1. Proving the intended properties of a general-purpose proving system, such as soundness, completeness, and zero knowledge.
+ 2. Proving the intended properties of an application-specific proving system, such as that it proves the intended statements.
 
 - Let us assume that an application-specific proving system is an application of a general-purpose proving system. Then we can break down the problem of formally verifying the application-specific proving system into the problem of verifying the underlying general-purpose system and the problem of verifying that the general-purpose system is being applied correctly
 
@@ -386,8 +386,8 @@ Table of Content
 
 - Denotational design provides a helpful way of thinking about both problem spaces (general and application-specific). The circuit denotes a set: namely, the set of public inputs for which the circuit is satisfiable. The goal of application specific circuit verification is to prove that the circuit denotes the intended relation. The goal of general purpose proving system verification is to prove that it has the intended properties with respect to the denotational semantics of circuits:
 
-  1. Soundness means that if the verifier accepts a proof, then with high probability, the public input used to generate the proof (i.e., the statement being proven) is in the set denoted by the circuit (i.e., the statement is true)
-  2. Completeness means that if a public input (i.e., a statement) is in the set denoted by the circuit (i.e., the statement is true), then the proving algorithm successfully outputs a proof which the verifier accepts
+ 1. Soundness means that if the verifier accepts a proof, then with high probability, the public input used to generate the proof (i.e., the statement being proven) is in the set denoted by the circuit (i.e., the statement is true)
+ 2. Completeness means that if a public input (i.e., a statement) is in the set denoted by the circuit (i.e., the statement is true), then the proving algorithm successfully outputs a proof which the verifier accepts
 
 - If you know that your circuit denotes the relation you intend, and you know that your general purpose proof system is sound and complete in the above senses, then you know that your application-specific proving system (i.e., the circuit plus the general proof system) has the intended soundness and completeness properties for that application
 
