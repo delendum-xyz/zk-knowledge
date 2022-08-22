@@ -453,10 +453,14 @@ Table of Content
       - A theory of interaction combinator arithmetization, towards compiling
         formally verified code into circuits
       - No timeline on this; still in basic research
+- Veridise is working on:
+    - [Medjai](https://github.com/Veridise/Medjai), a symbolic evaluator for Cairo, intended for use in automatic proof search
+    - [Picus](https://github.com/Veridise/Picus), a symbolic VM for R1CS, intended for use in automatic proof search
+    - [V](https://github.com/Veridise/V), a specification language intended for use in expressing statements to be proven
+      by automatic proof search
 
 ### Future Outlook
 
  - A lot of work needs to be done
  - There is not enough emphasis placed on formal verification in the security industry
- - Orbis Labs intends to deliver a toolchain for probabilistic proving which is formally verified end-to-end
- - We are not aware of any competition for Orbis Labs in this particular effort, and such competition would be welcome
+ - Orbis Labs and Veridise intend to deliver toolchains for formally verified probabilistic proving
