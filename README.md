@@ -426,8 +426,22 @@ Table of Content
 
 ### The State of Current Progress
 
-- 
+- Decades of research exists on formal verification strategies for arithmetic circuits in the context of hardware verification
+   - See, e.g., [Drechsler et al (2022)](https://link.springer.com/chapter/10.1007/978-981-16-7182-1_36) and [Yu et al (2016)](https://ieeexplore.ieee.org/document/7442835)
+   - This work has limited industral applications, e.g., the AAMP5 (see [Kern and Greenstreet (1997), page 43](https://cse.usf.edu/~haozheng/lib/verification/general/survey-FV.pdf))
+   - This line of research is not directly applicable to formal verification of arithmetic circuits for zk-SNARKs, because 
+     arithmetic circuits in hardware and arithmetic circuits in zk-SNARKs are not quite the same things
+- Orbis Labs is working on:
+   - A [verifying Halo 2 circuit compiler](https://github.com/Orbis-Tertius/coq-arithmetization) for [Σ¹₁ formulas](https://eprint.iacr.org/2022/777)
+      - Expected to be working in Q4 2022 or Q1 2023
+   - A toolchain (Miya) for developing formally verified, hardware accelerated probabilistic proof systems
+      - A theory of interaction combinator arithmetization, towards compiling
+        formally verified code into circuits
+      - No timeline on this; still in basic research
 
 ### Future Outlook
 
-- 
+ - A lot of work needs to be done
+ - There is not enough emphasis placed on formal verification in the security industry
+ - Orbis Labs intends to deliver a toolchain for probabilistic proving which is formally verified end-to-end
+ - We are not aware of any competition for Orbis Labs in this particular effort, and that would be welcome
