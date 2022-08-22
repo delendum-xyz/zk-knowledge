@@ -410,6 +410,7 @@ Table of Content
    - Soundness means that if the verifier accepts a proof that X is solvable, then with high probability, X is solvable
    - Completeness means that if X is solvable, then the prover creates a proof that X is solvable which the verifier accepts
    - Zero knowledge means that having a proof that X is solvable does not reduce the computational difficulty of finding a solution to X
+   - To see this example worked out more formally, see [the OSL whitepaper](https://eprint.iacr.org/2022/1003).
 
 - If you know that your circuit denotes the relation you intend, and you know that your general purpose proof system is sound and complete in the above senses, then you know that your application-specific proving system (i.e., the circuit plus the general proof system) has the intended soundness and completeness properties for that application
 
@@ -447,6 +448,7 @@ Table of Content
 - Orbis Labs is working on:
    - A [verifying Halo 2 circuit compiler](https://github.com/Orbis-Tertius/coq-arithmetization) for [Σ¹₁ formulas](https://eprint.iacr.org/2022/777)
       - Expected to be working in Q4 2022 or Q1 2023
+   - [Orbis Specification Language (OSL)](https://eprint.iacr.org/2022/1003/), which provides a high level spec language which we can compile to Σ¹₁ formulas
    - A toolchain (Miya) for developing formally verified, hardware accelerated probabilistic proof systems
       - A theory of interaction combinator arithmetization, towards compiling
         formally verified code into circuits
