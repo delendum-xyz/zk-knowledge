@@ -352,8 +352,13 @@ Table of Content
 ### Techniques
 
 - To prove a general statement with certainty, it must be a purely mathematical statement which can be known to be true by reasoning alone, without needing to perform any tests. The reasoning must start from consistent assumptions (axioms) and proceed by truth-preserving inferences
+   - Example: given that a bachelor is defined as an unmarried man, and a married man by definition has a spouse, it can be proven with certainty that no bachelor has a spouse.
 
-- A proof theory codifies a consistent set of rules for performing truth-preserving inference. Proof theories can be used to construct proofs manually, with pencil and paper. Computer programs called proof assistants reduce labor and mitigate the risk of human error by helping the user to construct machine-checkable proofs
+- A proof theory codifies a consistent set of rules for performing truth-preserving inference. Proof theories can be used to construct proofs manually, with pencil and paper
+   - Example: [sequent calculus for classical logic](http://logitext.mit.edu/logitext.fcgi/tutorial)
+
+- Computer programs called proof assistants reduce labor and mitigate the risk of human error by helping the user to construct machine-checkable proofs
+   - Examples: [Coq](https://coq.inria.fr/), [Agda](https://agda.readthedocs.io/en/v2.6.0.1/getting-started/what-is-agda.html), and [Lean](https://leanprover.github.io/)
 
 #### Using a proof assistant
 
@@ -362,13 +367,14 @@ Table of Content
   1. Write the program in the proof assistant language and apply the proving facilities to the program directly
   2. Use a transpiler to turn a program written in another language into an object which the proof assistant can reason about
 
-- Of these approaches, (1) seems preferable for the greater confidence provided by the proof being about exactly the program being executed, as opposed to output of a transpiler which is assumed to have the same meaning as the source program. What motivates approach (2) is when (for whatever reason) the proof assistant language is not suitable as a language for developing the application in
+- Of these approaches, (1) seems preferable for the greater confidence provided by the proof being about exactly the (source) program being executed, as opposed to output of a transpiler which is assumed to have the same meaning as the source program
+- What motivates approach (2) is when (for whatever reason) the proof assistant language is not suitable as a language for developing the application in
 
 #### Without using a proof assistant
 
 - There are also ways to prove a statement about a program without (directly) using a proof assistant:
 
-  3. Use a verifying compiler, which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verifying compiler
+  3. Use a verifying compiler (e.g. [CompCert](https://compcert.org/)), which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verifying compiler
   4. Use an automatic proof search algorithm, which takes as input statements to be proven and outputs proofs of those statements if those statements are true and the proof search algorithm finds proofs
 
 - Both of these approaches have limitations:
@@ -398,6 +404,14 @@ Table of Content
   1. Soundness means that if the verifier accepts a proof, then with high probability, the public input used to generate the proof (i.e., the statement being proven) is in the set denoted by the circuit (i.e., the statement is true)
   2. Completeness means that if a public input (i.e., a statement) is in the set denoted by the circuit (i.e., the statement is true), then the proving algorithm successfully outputs a proof which the verifier accepts
 
+ - Example: consider a ZK proving system which one would use to show that one has a solution to a Sudoku puzzle, without revealing the solution
+   - The statements to be proven are of the form "X (a Sudoku puzzle) is solvable"
+   - The relation we intend is the set of solvable Sudoku puzzles
+   - Soundness means that if the verifier accepts a proof that X is solvable, then with high probability, X is solvable
+   - Completeness means that if X is solvable, then the prover creates a proof that X is solvable which the verifier accepts
+   - Zero knowledge means that having a proof that X is solvable does not reduce the computational difficulty of finding a solution to X
+   - To see this example worked out more formally, see [the OSL whitepaper](https://eprint.iacr.org/2022/1003).
+
 - If you know that your circuit denotes the relation you intend, and you know that your general purpose proof system is sound and complete in the above senses, then you know that your application-specific proving system (i.e., the circuit plus the general proof system) has the intended soundness and completeness properties for that application
 
 - This suggests that, given a formally verified general-purpose proving system, and a verifying compiler from statements to circuits, one can solve the problem of proving correctness of application-specific proving systems without application-specific correctness proofs
@@ -426,8 +440,27 @@ Table of Content
 
 ### The State of Current Progress
 
-- 
+- Decades of research exists on formal verification strategies for arithmetic circuits in the context of hardware verification
+   - See, e.g., [Drechsler et al (2022)](https://link.springer.com/chapter/10.1007/978-981-16-7182-1_36) and [Yu et al (2016)](https://ieeexplore.ieee.org/document/7442835)
+   - This work has limited industral applications, e.g., the AAMP5 (see [Kern and Greenstreet (1997), page 43](https://cse.usf.edu/~haozheng/lib/verification/general/survey-FV.pdf))
+   - This line of research is not directly applicable to formal verification of arithmetic circuits for zk-SNARKs, because 
+     arithmetic circuits in hardware and arithmetic circuits in zk-SNARKs are not quite the same things
+- Orbis Labs is working on:
+   - A [verifying Halo 2 circuit compiler](https://github.com/Orbis-Tertius/coq-arithmetization) for [Σ¹₁ formulas](https://eprint.iacr.org/2022/777)
+      - Expected to be working in Q4 2022 or Q1 2023
+   - [Orbis Specification Language (OSL)](https://eprint.iacr.org/2022/1003/), which provides a high level spec language which we can compile to Σ¹₁ formulas
+   - A toolchain (Miya) for developing formally verified, hardware accelerated probabilistic proof systems
+      - A theory of interaction combinator arithmetization, towards compiling
+        formally verified code into circuits
+      - No timeline on this; still in basic research
+- Veridise is working on:
+    - [Medjai](https://github.com/Veridise/Medjai), a symbolic evaluator for Cairo, intended for use in automatic proof search
+    - [Picus](https://github.com/Veridise/Picus), a symbolic VM for R1CS, intended for use in automatic proof search
+    - [V](https://github.com/Veridise/V), a specification language intended for use in expressing statements to be proven
+      by automatic proof search
 
 ### Future Outlook
 
-- 
+ - A lot of work needs to be done
+ - There is not enough emphasis placed on formal verification in the security industry
+ - Orbis Labs and Veridise intend to deliver toolchains for formally verified probabilistic proving
