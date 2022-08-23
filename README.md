@@ -453,6 +453,9 @@ Table of Content
       - A theory of interaction combinator arithmetization, towards compiling
         formally verified code into circuits
       - No timeline on this; still in basic research
+- Kelstrel Institute is a research lab that has worked with Aleo on Leo [lang](https://www.kestrel.edu/)
+- Nomadic Labs is a consulting firm that works on Tezos and they built the sapling protocol into a tezos contract. They also do a lot of FV [work](https://www.nomadic-labs.com/)
+- Anoma team is working on the [Juvix language](https://github.com/anoma/juvix) as a first step toward creating more robust and reliable alternatives for formally verified smart contracts than existing languages
 - Veridise is working on:
     - [Medjai](https://github.com/Veridise/Medjai), a symbolic evaluator for Cairo, intended for use in automatic proof search
     - [Picus](https://github.com/Veridise/Picus), a symbolic VM for R1CS, intended for use in automatic proof search
