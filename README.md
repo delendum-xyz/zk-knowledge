@@ -467,6 +467,15 @@ Table of Content
     - [Picus](https://github.com/Veridise/Picus), a symbolic VM for R1CS, intended for use in automatic proof search
     - [V](https://github.com/Veridise/V), a specification language intended for use in expressing statements to be proven
       by automatic proof search
+- [Ecne](https://0xparc.org/blog/ecne) is a special-purpose automatic proof search tool which can prove
+  that an R1CS constraint system defines a function (total or partial)
+   - In other words, it proves that for any input values on which the system is satisfiable, there
+     is a unique combination of output values on which the system is satisfied
+   - This proves, for an R1CS which is intended to be satisfiable on all possible inputs (denoting a function
+     as opposed to a partial function), that there are enough constraints, in the sense that adding constraints
+     could not change the denotation of the circuit if the denotation remains a partial function
+   - This does not imply soundness
+   - This approach has been proven to be useful in flushing out bugs in circuits
 
 ### Future Outlook
 
