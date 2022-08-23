@@ -453,8 +453,14 @@ Table of Content
       - A theory of interaction combinator arithmetization, towards compiling
         formally verified code into circuits
       - No timeline on this; still in basic research
-- Kelstrel Institute is a research lab that has worked with Aleo on Leo [lang](https://www.kestrel.edu/)
+- [Kestrel Institute](https://www.kestrel.edu) is a research lab that has worked with [Aleo](https://www.aleo.org/) on [Leo](https://leo-lang.org/)
+   - Aleo aims to create a verifying circuit compiler for Leo
+   - They aim to support proving the correctness of circuits integrating Leo-compiled circuitry with manually written R1CS, using Kestrel's [Axe](https://www.kestrel.edu/research/axe/) toolkit
 - Nomadic Labs is a consulting firm that works on Tezos and they built the sapling protocol into a tezos contract. They also do a lot of FV [work](https://www.nomadic-labs.com/)
+   - They used the [ACL2](https://www.cs.utexas.edu/users/moore/acl2/) proof assistant to formalize specs of parts of the Zcash protocol
+   - They formalized rank 1 constraint systems (R1CS) in ACL2
+   - They used an extraction tool to represent the R1CS gadgets for parts of the Zcash protocol in ACL2
+   - They proved in ACL2 that those R1CS gadgets are denotationally equivalent to their specs, implying soundness and completeness
 - Anoma team is working on the [Juvix language](https://github.com/anoma/juvix) as a first step toward creating more robust and reliable alternatives for formally verified smart contracts than existing languages
 - Veridise is working on:
     - [Medjai](https://github.com/Veridise/Medjai), a symbolic evaluator for Cairo, intended for use in automatic proof search
