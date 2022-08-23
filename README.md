@@ -453,14 +453,29 @@ Table of Content
       - A theory of interaction combinator arithmetization, towards compiling
         formally verified code into circuits
       - No timeline on this; still in basic research
-- Kelstrel Institute is a research lab that has worked with Aleo on Leo [lang](https://www.kestrel.edu/)
+- [Kestrel Institute](https://www.kestrel.edu) is a research lab that has worked with [Aleo](https://www.aleo.org/) on [Leo](https://leo-lang.org/)
+   - Aleo aims to create a verifying circuit compiler for Leo
+   - They aim to support proving the correctness of circuits integrating Leo-compiled circuitry with manually written R1CS, using Kestrel's [Axe](https://www.kestrel.edu/research/axe/) toolkit
 - Nomadic Labs is a consulting firm that works on Tezos and they built the sapling protocol into a tezos contract. They also do a lot of FV [work](https://www.nomadic-labs.com/)
+   - They used the [ACL2](https://www.cs.utexas.edu/users/moore/acl2/) proof assistant to formalize specs of parts of the Zcash protocol
+   - They formalized rank 1 constraint systems (R1CS) in ACL2
+   - They used an extraction tool to represent the R1CS gadgets for parts of the Zcash protocol in ACL2
+   - They proved in ACL2 that those R1CS gadgets are denotationally equivalent to their specs, implying soundness and completeness
 - Anoma team is working on the [Juvix language](https://github.com/anoma/juvix) as a first step toward creating more robust and reliable alternatives for formally verified smart contracts than existing languages
 - Veridise is working on:
     - [Medjai](https://github.com/Veridise/Medjai), a symbolic evaluator for Cairo, intended for use in automatic proof search
     - [Picus](https://github.com/Veridise/Picus), a symbolic VM for R1CS, intended for use in automatic proof search
     - [V](https://github.com/Veridise/V), a specification language intended for use in expressing statements to be proven
       by automatic proof search
+- [Ecne](https://0xparc.org/blog/ecne) is a special-purpose automatic proof search tool which can prove
+  that an R1CS constraint system defines a function (total or partial)
+   - In other words, it proves that for any input values on which the system is satisfiable, there
+     is a unique combination of output values on which the system is satisfied
+   - This proves, for an R1CS which is intended to be satisfiable on all possible inputs (denoting a function
+     as opposed to a partial function), that there are enough constraints, in the sense that adding constraints
+     could not change the denotation of the circuit if the denotation remains a partial function
+   - This does not imply soundness
+   - This approach has been proven to be useful in flushing out bugs in circuits
 
 ### Future Outlook
 
