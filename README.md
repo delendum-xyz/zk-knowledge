@@ -46,6 +46,7 @@ Table of Content
   * [Techniques](#techniques-1)
   * [Formal Verification for ZK Circuits](#formal-verification-for-zk-circuits)
   * [Formally Verified Programs](#formally-verified-programs)
+  * [The State of Current Progress](#the-state-of-current-progress)
 
 ## Hardware Acceleration
 
