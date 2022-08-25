@@ -349,13 +349,15 @@ Table of Content
 ### Leading Problem
 
 - How do we formally verify that a set of constraints used by a zero knowledge proof system has the desired characteristics, such as soundness, completeness, functional correctness, and zero knowledge?
+
 - Zero knowledge proof systems often use a mathematical constraint system such as R1CS or AIR to encode a computation. The zero knowledge proof is a probabilistic cryptographic proof that the computation was done correctly
+
 - Formal verification of a constraint system used in a zero knowledge proof requires 
-   1. a formal specification of the computation that the constraint system is intended to encode
-   2. a formal model of the semantics of the constraint system
-   3. the specific set of constraints representing the computation
-   4. the theorem prover, and
-   5. the mechanized proof of a theorem relating (1) and (3)
+   - (1) a formal specification of the computation that the constraint system is intended to encode
+   - (2) a formal model of the semantics of the constraint system
+   - (3) the specific set of constraints representing the computation
+   - (4) the theorem prover, and
+   - (5) the mechanized proof of a theorem relating (1) and (3)
 
 ### Techniques
 
