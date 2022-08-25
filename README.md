@@ -477,6 +477,9 @@ Table of Content
      could not change the denotation of the circuit if the denotation remains a partial function
    - This does not imply soundness
    - This approach has been proven to be useful in flushing out bugs in circuits
+- [Starkware](https://starkware.co/) is writing [Lean](https://leanprover.github.io/)
+  [proofs](https://github.com/starkware-libs/formal-proofs) to check that
+  circuits expressed as Cairo programs conform to their specs
 
 ### Future Outlook
 
