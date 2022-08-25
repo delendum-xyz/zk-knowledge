@@ -348,7 +348,14 @@ Table of Content
 
 ### Leading Problem
 
-- How do we prove, not in a probabilistic sense, but with certainty, that executable implementations of probabilistic proof systems have the intended characteristics, such as soundness, completeness, and zero knowledge?
+- How do we formally verify that a set of constraints used by a zero knowledge proof system has the desired characteristics, such as soundness, completeness, functional correctness, and zero knowledge?
+- Zero knowledge proof systems often use a mathematical constraint system such as R1CS or AIR to encode a computation. The zero knowledge proof is a probabilistic cryptographic proof that the computation was done correctly
+- Formal verification of a constraint system used in a zero knowledge proof requires 
+   1. a formal specification of the computation that the constraint system is intended to encode
+   2. a formal model of the semantics of the constraint system
+   3. the specific set of constraints representing the computation
+   4. the theorem prover, and
+   5. the mechanized proof of a theorem relating (1) and (3)
 
 ### Techniques
 
@@ -454,9 +461,16 @@ Table of Content
       - A theory of interaction combinator arithmetization, towards compiling
         formally verified code into circuits
       - No timeline on this; still in basic research
-- [Kestrel Institute](https://www.kestrel.edu) is a research lab that has worked with [Aleo](https://www.aleo.org/) on [Leo](https://leo-lang.org/)
-   - Aleo aims to create a verifying circuit compiler for Leo
-   - They aim to support proving the correctness of circuits integrating Leo-compiled circuitry with manually written R1CS, using Kestrel's [Axe](https://www.kestrel.edu/research/axe/) toolkit
+- [Kestrel Institute](https://www.kestrel.edu) is a research lab that has proved functional correctness of a number of R1CS gadgets using the ACL2 theorem prover.  (Kestrel also does a lot of other FV work, including on Yul, Solidity, Ethereum, and Bitcoin)
+   - They [formalized and proved](https://www.cs.utexas.edu/users/moore/acl2/manuals/latest/index.html?topic=ZKSEMAPHORE____SEMAPHORE) the functional correctness of parts of the Ethereum Semaphore R1CS
+   - They [formalized and proved](https://www.cs.utexas.edu/users/moore/acl2/manuals/latest/index.html?topic=ZCASH____ZCASH) the functional correctness of parts of the Zcash Sapling protocol.  An overview of the process:
+     - Used the [ACL2](https://www.cs.utexas.edu/users/moore/acl2/) proof assistant to formalize specs of parts of the Zcash Sapling protocol
+     - Formalized rank 1 constraint systems [(R1CS) in ACL2](https://www.cs.utexas.edu/users/moore/acl2/manuals/latest/index.html?topic=R1CS____R1CS)
+     - Used an extraction tool to fetch the R1CS gadgets from the Bellman implementation, and then used the [Axe](https://www.kestrel.edu/research/axe/) toolkit to lift the R1CS into logic
+     - Proved in ACL2 that those R1CS gadgets are semantically equivalent to their specs, implying soundness and completeness
+- [Aleo](https://www.aleo.org/) is developing programming languages such as [Leo](https://leo-lang.org/) that compile to constraint systems such as R1CS
+     - Aleo aims to create a verifying compiler for Leo, with theorems of correct compilation generated and checked using the ACL2 theorem prover
+     - Aleo has also done post-hoc verification of R1CS gadgets using Kestrel Institute's [Axe](https://www.kestrel.edu/research/axe/) toolkit
 - Nomadic Labs is a consulting firm that works on Tezos and they built the sapling protocol into a tezos contract. They also do a lot of FV [work](https://www.nomadic-labs.com/)
    - They used the [ACL2](https://www.cs.utexas.edu/users/moore/acl2/) proof assistant to formalize specs of parts of the Zcash protocol
    - They formalized rank 1 constraint systems (R1CS) in ACL2
@@ -481,8 +495,19 @@ Table of Content
   [proofs](https://github.com/starkware-libs/formal-proofs) to check that
   circuits expressed as Cairo programs conform to their specs
 
+### How to analyze each research effort / development project
+
+- You could analyze each research effort / development project in terms of
+   - the language used for specification
+   - the language used to model the constraint system
+   - which theorem prover they are using
+   - what sorts of theorems are they proving, like soundness, completeness, functional completeness, and zero knowledge
+- Other interesting attributes of project concerning FV for constraint systems are:
+   - whether the tooling and the formal verification are open source.  It is hard to have confidence in a theorem when the components that went into proving that theorem are not available for inspection
+   - what is the trusted core, i.e., what software in the stack is not formally verified, and what are the possible consequences if it has bugs
+
 ### Future Outlook
 
  - A lot of work needs to be done
  - There is not enough emphasis placed on formal verification in the security industry
- - Orbis Labs and Veridise intend to deliver toolchains for formally verified probabilistic proving
+
