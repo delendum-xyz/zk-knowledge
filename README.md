@@ -374,8 +374,8 @@ Table of Content
 
 - To use a proof assistant to prove a statement about a program, there are two main approaches:
 
-  1. Write the program in the proof assistant language and apply the proving facilities to the program directly
-  2. Use a transpiler to turn a program written in another language into an object which the proof assistant can reason about
+  - (1) Write the program in the proof assistant language and apply the proving facilities to the program directly
+  - (2) Use a transpiler to turn a program written in another language into an object which the proof assistant can reason about
 
 - Of these approaches, (1) seems preferable for the greater confidence provided by the proof being about exactly the (source) program being executed, as opposed to output of a transpiler which is assumed to have the same meaning as the source program
 - What motivates approach (2) is when (for whatever reason) the proof assistant language is not suitable as a language for developing the application in
@@ -473,11 +473,7 @@ Table of Content
 - [Aleo](https://www.aleo.org/) is developing programming languages such as [Leo](https://leo-lang.org/) that compile to constraint systems such as R1CS
      - Aleo aims to create a verifying compiler for Leo, with theorems of correct compilation generated and checked using the ACL2 theorem prover
      - Aleo has also done post-hoc verification of R1CS gadgets using Kestrel Institute's [Axe](https://www.kestrel.edu/research/axe/) toolkit
-- Nomadic Labs is a consulting firm that works on Tezos and they built the sapling protocol into a tezos contract. They also do a lot of FV [work](https://www.nomadic-labs.com/)
-   - They used the [ACL2](https://www.cs.utexas.edu/users/moore/acl2/) proof assistant to formalize specs of parts of the Zcash protocol
-   - They formalized rank 1 constraint systems (R1CS) in ACL2
-   - They used an extraction tool to represent the R1CS gadgets for parts of the Zcash protocol in ACL2
-   - They proved in ACL2 that those R1CS gadgets are denotationally equivalent to their specs, implying soundness and completeness
+- [Nomadic Labs](https://www.nomadic-labs.com/) is a consulting firm that does a lot of work on Tezos and they built the Zcash Sapling protocol for shielded transactions into the Tezos blockchain as of the Edo upgrade.   Kestrel Institute formally verified some of the R1CSes used in that protocol. (Nomadic Labs also does a lot of other FV work)
 - Anoma team is working on the [Juvix language](https://github.com/anoma/juvix) as a first step toward creating more robust and reliable alternatives for formally verified smart contracts than existing languages
 - Veridise is working on:
     - [Medjai](https://github.com/Veridise/Medjai), a symbolic evaluator for Cairo, intended for use in automatic proof search
