@@ -384,14 +384,17 @@ Table of Content
 
 - There are also ways to prove a statement about a program without (directly) using a proof assistant:
 
-  3. Use a verifying compiler (e.g. [CompCert](https://compcert.org/)), which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verifying compiler
-  4. Use an automatic proof search algorithm, which takes as input statements to be proven and outputs proofs of those statements if those statements are true and the proof search algorithm finds proofs
+  - Use a verifying compiler (e.g. [CompCert](https://compcert.org/)), which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verifying compiler
+  - Use an automatic proof search algorithm, which takes as input statements to be proven and outputs proofs of those statements if those statements are true and the proof search algorithm finds proofs
+  - Use a static analyzer, which takes as input a program and automatically checks for various kinds of issues using predetermined algorithms
 
 - Both of these approaches have limitations:
 
   - A verifying compiler is limited in what statements it can prove about the resulting program: typically, just that the resulting program has the same meaning or behavior as the source program
 
   - An automatic proof search algorithm is limited in what statements it can prove by the sophistication of the algorithm and the computational power applied to it. Also, due to Gödel's incompleteness theorem, there cannot exist a proof search algorithm which would find a proof of any given true statement
+
+  - A static analyzer is generally not capable of reasoning about the meaning of a program to see if it’s correct; it is only able to recognize patterns which always or often indicate some kind of issue
 
 ### Formal Verification for ZK Circuits
 
@@ -436,10 +439,16 @@ Table of Content
 
 ### Efficient execution of formally verified programs
 
-- Efficient execution of formally verified programs is a largely unsolved problem:
+- Here is a summary of some of the ways in which the ecosystem supports efficient execution of verified code:
 
   - The proof assistants [Coq](https://coq.inria.fr/) and [Agda](https://github.com/agda/agda/) do not provide for compilation of programs written in those languages to an efficiently executable form
   - The language [ATS](http://www.ats-lang.org/) provides proof facilities and purports to allow for programming with the efficiency of C and C++
+  - There are various means for transpiling code written in a mainstream language such as C or Haskell into a proof assistant, which allows for theorems to be proven about the extracted model of the source program
+  - You can synthesize an efficient binary program using Coq (e.g., using [Fiat](https://github.com/mit-plv/fiat-crypto))
+  - The proof assistant ACL2 defines a subset of Common Lisp with a full formal logic.  When a definition is executable, it can be compiled into efficient code, and because the language is a formal logic, you can define and prove theorems about the code
+  - There is a verifying compiler project, [ATC](https://kestrel.edu/research/atc), from ACL2 to C
+  - Similarly, Imandra defines a subset of OCaml with a full formal logic and a theorem prover
+
 
 #### Modern computing
 
