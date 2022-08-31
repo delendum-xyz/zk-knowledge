@@ -47,6 +47,7 @@ Table of Content
   * [Formal Verification for ZK Circuits](#formal-verification-for-zk-circuits)
   * [Formally Verified Programs](#formally-verified-programs)
   * [The State of Current Progress](#the-state-of-current-progress)
+  * [Future Research & Development Directions](#future-research-&-development-directions)
 
 ## Hardware Acceleration
 
@@ -384,13 +385,15 @@ Table of Content
 
 - There are also ways to prove a statement about a program without (directly) using a proof assistant:
 
-  - Use a verifying compiler (e.g. [CompCert](https://compcert.org/)), which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verifying compiler
+  - Use a verified compiler (e.g. [CompCert](https://compcert.org/)), which turns a source program into an object program which provably has certain properties by virtue of (proven) facts about the verified compiler
+     - Note that there is a distinction between a verified compiler and a verifying compiler.  CompCert itself is proved to generate binary that will always be semantically equivalent to the C input.  A verifying compiler generates a binary along with a proof of correctness that the binary is semantically equivalent to the source.
+     - When a program is compiled by a verifying or verified compiler, we say that the compiler output is correct by construction (provided that the input is correct).
   - Use an automatic proof search algorithm, which takes as input statements to be proven and outputs proofs of those statements if those statements are true and the proof search algorithm finds proofs
   - Use a static analyzer, which takes as input a program and automatically checks for various kinds of issues using predetermined algorithms
 
 - Both of these approaches have limitations:
 
-  - A verifying compiler is limited in what statements it can prove about the resulting program: typically, just that the resulting program has the same meaning or behavior as the source program
+  - A verified compiler is limited in what statements it can prove about the resulting program: typically, just that the resulting program has the same meaning or behavior as the source program
 
   - An automatic proof search algorithm is limited in what statements it can prove by the sophistication of the algorithm and the computational power applied to it. Also, due to Gödel's incompleteness theorem, there cannot exist a proof search algorithm which would find a proof of any given true statement
 
@@ -484,6 +487,7 @@ Table of Content
      - Aleo has also done post-hoc verification of R1CS gadgets using Kestrel Institute's [Axe](https://www.kestrel.edu/research/axe/) toolkit
 - [Nomadic Labs](https://www.nomadic-labs.com/) is a consulting firm that does a lot of work on Tezos and they built the Zcash Sapling protocol for shielded transactions into the Tezos blockchain as of the Edo upgrade.   Kestrel Institute formally verified some of the R1CSes used in that protocol. (Nomadic Labs also does a lot of other FV work)
 - Anoma team is working on the [Juvix language](https://github.com/anoma/juvix) as a first step toward creating more robust and reliable alternatives for formally verified smart contracts than existing languages
+- Andrew Miller and Bolton Bailey are working on a [formal verification of a variety of SNARK proof systems](https://github.com/BoltonBailey/formal-snarks-project), using the Lean Theorem Prover, in the Algebraic Group Model
 - Veridise is working on:
     - [Medjai](https://github.com/Veridise/Medjai), a symbolic evaluator for Cairo, intended for use in automatic proof search
     - [Picus](https://github.com/Veridise/Picus), a symbolic VM for R1CS, intended for use in automatic proof search
@@ -513,8 +517,18 @@ Table of Content
    - whether the tooling and the formal verification are open source.  It is hard to have confidence in a theorem when the components that went into proving that theorem are not available for inspection
    - what is the trusted core, i.e., what software in the stack is not formally verified, and what are the possible consequences if it has bugs
 
-### Future Outlook
+### Future Research & Development Directions
 
- - A lot of work needs to be done
- - There is not enough emphasis placed on formal verification in the security industry
+ - A lot of work needs to be done. There is not enough emphasis placed on formal verification in the security industry
+ - Based on the observations and arguments presented in this blog post, we think the following will be some interesting directions for future research and development:
+   - Build foundations for formally verifying zero knowledge proof systems:
+   - Generalizable proof techniques for proving the desired properties formally
+   - Reusable verified abstractions for proof systems, e.g., a polynomial commitment scheme library
+- Can we formally verify systems that are designed to automatically make ZK circuits more efficient? 
+   - For example: systems that choose a different circuit so that the setup MPC is more parallelizable or that allow a prover who learns part of the witness in advance to partially evaluate a circuit and use this information to compute proofs faster
+- Improved specification languages and verified translators between specification languages
+- Understand how to create formally verified programs to run on vectorized hardware, e.g., FPGAs, GPUs, and/or ASICs
+
+
+
 
