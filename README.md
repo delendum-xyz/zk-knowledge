@@ -440,7 +440,7 @@ Table of Content
 
 - Then one can generate formally verified application-specific probabilistic proving systems without any additional proof writing for an additional application. This seems like a promising way forward towards a sustainable and cost effective approach to formal verification for ZK circuits
 
-### Efficient execution of formally verified programs
+### Synthesizing formally verified programs
 
 - Here is a summary of some of the ways in which the ecosystem supports efficient execution of verified code:
 
@@ -450,10 +450,10 @@ Table of Content
   - You can synthesize an efficient binary program using Coq (e.g., using [Fiat](https://github.com/mit-plv/fiat-crypto))
   - The proof assistant ACL2 defines a subset of Common Lisp with a full formal logic.  When a definition is executable, it can be compiled into efficient code, and because the language is a formal logic, you can define and prove theorems about the code
   - There is a verifying compiler project, [ATC](https://kestrel.edu/research/atc), from ACL2 to C
-  - Similarly, Imandra defines a subset of OCaml with a full formal logic and a theorem prover
+  - Imandra defines a subset of OCaml with a full formal logic and a theorem prover
 
 
-#### Modern computing
+#### Current limitations of formal methods on modern hardware
 
 - In the context of modern computing, most computationally intensive tasks deal with vector math and other embarassingly parallel problems which are done most efficiently on specialized hardware such as GPUs, FPGAs, and ASICs
 - This is generally true of the problem of constructing proofs in probabilistic proof systems. Provers for these proof systems would be most efficient if implemented on specialized hardware, but in practice, they are usually implemented on CPUs, due to the greater ease of programming on CPUs and the greater availability of those skill sets in the labor market
@@ -529,6 +529,10 @@ Table of Content
 - Improved specification languages and verified translators between specification languages
 - Understand how to create formally verified programs to run on vectorized hardware, e.g., FPGAs, GPUs, and/or ASICs
 
+### Terminology
+
+- There are different ways to axiomatize a problem to prove it.  Some categories are denotational semantics, axiomatic semantics, and operational semantics.  Operational semantics is particularly useful for proving things about programs
+- If you write a specification of a computation in a high-level formal language and compile it to a constraint system using a verified or verifying compiler, that is called correct by construction.  If you take an existing constraint system and you try to prove properties about it (up to and including soundness and completeness) with respect to a specification in a high-level formal language, that is called post-hoc verification
 
 
 
