@@ -47,7 +47,7 @@ Table of Content
   * [Formal Verification for ZK Circuits](#formal-verification-for-zk-circuits)
   * [Formally Verified Programs](#formally-verified-programs)
   * [The State of Current Progress](#the-state-of-current-progress)
-  * [Future Research & Development Directions](#future-research-&-development-directions)
+  * [Future Research Directions](#future-research-directions)
 
 ## Hardware Acceleration
 
@@ -520,7 +520,7 @@ Table of Content
    - whether the tooling and the formal verification are open source.  It is hard to have confidence in a theorem when the components that went into proving that theorem are not available for inspection
    - what is the trusted core, i.e., what software in the stack is not formally verified, and what are the possible consequences if it has bugs
 
-### Future Research & Development Directions
+### Future Research Directions
 
  - A lot of work needs to be done. There is not enough emphasis placed on formal verification in the security industry
  - Based on the observations and arguments presented in this blog post, we think the following will be some interesting directions for future research and development:
