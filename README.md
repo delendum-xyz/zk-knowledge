@@ -403,12 +403,13 @@ Table of Content
 
 - Formal verification for probabilistic proof systems, inclusive of ZK proof systems, encompasses two main problem spaces:
 
-  1. Proving the intended properties of a general-purpose proving system, such as soundness, completeness, and zero knowledge
-  2. Proving the intended properties of an application-specific proving system, such as that it proves the intended statements
+  1. Proving the intended properties of a general-purpose proving system, such as soundness, completeness, and zero knowledge (E.g., Bulletproofs, Halo 2, etc.)
+  2. Proving the intended properties of a circuit, namely that it correctly encodes the intended relation
 
-- Let us assume that an application-specific proving system is an application of a general-purpose proving system. Then we can break down the problem of formally verifying the application-specific proving system into the problem of verifying the underlying general-purpose system and the problem of verifying that the general-purpose system is being applied correctly
+- Problem (1) is generally considered a very difficult problem and has not been done for any significant proving system
 
-- If the mechanics of an application-specific proving system are specified in the form of a circuit, then the application-specific problem can be understood as the problem of circuit verification
+- Problem (2) can be done with a formal specification of the relation and a model of thcircuit semantics.  Usually it requires proving functional correctness of functions defined within the relation as well as the existence of witness variables for every argument to the function
+
 
 #### Denotational design
 
@@ -488,6 +489,8 @@ Table of Content
 - [Nomadic Labs](https://www.nomadic-labs.com/) is a consulting firm that does a lot of work on Tezos and they built the Zcash Sapling protocol for shielded transactions into the Tezos blockchain as of the Edo upgrade.   Kestrel Institute formally verified some of the R1CSes used in that protocol. (Nomadic Labs also does a lot of other FV work)
 - Anoma team is working on the [Juvix language](https://github.com/anoma/juvix) as a first step toward creating more robust and reliable alternatives for formally verified smart contracts than existing languages
 - Andrew Miller and Bolton Bailey are working on a [formal verification of a variety of SNARK proof systems](https://github.com/BoltonBailey/formal-snarks-project), using the Lean Theorem Prover, in the Algebraic Group Model
+- [Alex Ozdemir](https://cs.stanford.edu/~aozdemir/research/) from Stanford is working on adding a [finite field solver](https://github.com/alex-ozdemir/CVC4/tree/ff) in cvc5 SMT Solver
+- Lucas Clemente Vella and Leonardo Alt are working on [SMT solver](https://github.com/lvella/polynomial-solver/blob/master/docs/SMT-2022-extended-abstract/full-text.pdf) of polynomial equations over finite fields
 - Veridise is working on:
     - [Medjai](https://github.com/Veridise/Medjai), a symbolic evaluator for Cairo, intended for use in automatic proof search
     - [Picus](https://github.com/Veridise/Picus), a symbolic VM for R1CS, intended for use in automatic proof search
