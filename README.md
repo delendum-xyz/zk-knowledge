@@ -49,6 +49,30 @@ Table of Content
   * [The State of Current Progress](#the-state-of-current-progress)
   * [Future Research Directions](#future-research-directions)
 
+## ZKP Knowledge Base
+
+### News
+
+- 
+
+### Key dates
+
+- **Jun 17 2022** Online Panel: Programming Languages in ZKP [[Youtube link]](https://www.youtube.com/watch?v=UKeQekPS1L4)
+- **Jul 15 2022** Online Panel: Compiler and Composability in ZKP [[Youtube link]](https://www.youtube.com/watch?v=zRngElDdUNE&t=2s)
+- **Aug 12 2022** Online Panel: Applications of ZKP [[Youtube link]](https://www.youtube.com/watch?v=m5WiIOC3xcM&t=148s)
+- **Aug 29 2022** Delendum ZK Meetup at SBC [[Event link]](https://www.eventbrite.com/e/delendum-zk-meetup-at-sbc-tickets-396799998477)
+- **Sep 08 2022** Online Panel: Security of ZK Systems [[Registration link]](https://www.eventbrite.com/e/security-of-zk-systems-tickets-405523681247)
+
+### Contributors
+
+- Ventali Tan,
+- Daniel Lubarov,
+- Shashank Agrawal,
+
+### Acknowledgment
+
+- 
+
 ## Hardware Acceleration
 
 ### Leading Problem
