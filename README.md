@@ -65,9 +65,13 @@ Table of Content
 
 ### Contributors
 
-- Ventali Tan,
-- Daniel Lubarov,
-- Shashank Agrawal,
+- [Ventali Tan](), Delendum
+- [Daniel Lubarov](http://daniel.lubarov.com/), Polygon Zero & Delendum
+- [Shashank Agrawal](https://shashank-agrawal.com/), Coinbase & Delendum
+- [Gautam Botrel](https://www.linkedin.com/in/gautam-botrel/), ConsenSys & Delendum
+- [Eric McCarthy](https://www.kestrel.edu/people/mccarthy/), Kestrel Institute
+- [Alessandro Coglio](https://www.kestrel.edu/people/coglio/), Kestrel Institute
+- 
 
 ### Acknowledgment
 
