@@ -53,7 +53,7 @@ Table of Content
 
 ### News
 
-- 
+- **Oct 31 - Nov 1 2022** The Crypto Economics Security Conference (CESC) [[Website]](https://cesc.io/)
 
 ### Key dates
 
@@ -71,11 +71,18 @@ Table of Content
 - [Gautam Botrel](https://www.linkedin.com/in/gautam-botrel/), ConsenSys & Delendum
 - [Eric McCarthy](https://www.kestrel.edu/people/mccarthy/), Kestrel Institute
 - [Alessandro Coglio](https://www.kestrel.edu/people/coglio/), Kestrel Institute
-- 
 
-### Acknowledgment
+### Contribution Guidelines
 
-- 
+- Make sure your contribution is useful before submitting
+- Make an individual pull request for each suggestion
+- Keep descriptions short and simple, but descriptive
+- New categories, or improvements to the existing categorization are welcome
+- The pull request should have a useful title and include a link to the package and why it should be included
+
+### Contact us
+
+- Projects reviews, research collaboration: hello@delendum.xyz
 
 ## Hardware Acceleration
 
