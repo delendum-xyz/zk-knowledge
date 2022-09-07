@@ -12,3 +12,4 @@ local/
 .idea/**/shelf
 
 .idea/**/contentModel.xml
+/Gemfile.lock
