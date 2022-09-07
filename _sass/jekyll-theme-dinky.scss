@@ -44,7 +44,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: #232323;
-  margin: 36px 0 10px;
+  margin: 32px 0 8px;
 }
 
 h1 {
@@ -52,7 +52,7 @@ h1 {
 }
 
 p, ul, ol, table, dl {
-  margin: 0 0 22px;
+  margin: 0 0 24px;
 }
 
 h1, h2, h3 {
@@ -64,7 +64,7 @@ h1, h2, h3 {
 h1, h2, h3 {
   display: block;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
 }
 
 h1 {
@@ -109,13 +109,13 @@ strong {
 ul {
   list-style-position: inside;
   list-style: disc;
-  padding-left: 25px;
+  padding-left: 24px;
 }
 
 ol {
   list-style-position: inside;
   list-style: decimal;
-  padding-left: 25px;
+  padding-left: 24px;
 }
 
 blockquote {
@@ -133,12 +133,12 @@ dl dt {
 }
 
 dl dd {
-  padding-left: 20px;
+  padding-left: 24px;
   font-style: italic;
 }
 
 dl p {
-  padding-left: 20px;
+  padding-left: 24px;
   font-style: italic;
 }
 
@@ -153,10 +153,9 @@ hr {
 
 img {
   position: relative;
-  margin: 0 auto;
   max-width: 650px;
   padding: 5px;
-  margin: 22px 0 22px 0;
+  margin: 24px 0;
   border: 1px solid #ccc;
 }
 
@@ -206,13 +205,13 @@ th {
   font-family: 'Arvo', Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-weight: normal;
-  padding: 10px;
+  padding: 8px;
   background: #232323;
   color: #FDFEFB;
 }
 
 td {
-  padding: 10px;
+  padding: 8px;
   background: #ccc;
 }
 
@@ -271,44 +270,6 @@ a.name {
   white-space: nowrap;
 }
 
-header ul {
-  // list-style:none;
-  // padding:0;
-}
-
-header li {
-  // list-style-type: none;
-  // width:132px;
-  // height:15px;
-  // margin-bottom: 12px;
-  // line-height: 1em;
-  // padding: 6px 6px 6px 7px;
-
-  // background: #AF0011;
-  // background: -moz-linear-gradient(top, #AF0011 0%, #820011 100%);
-  // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-  // background: -webkit-linear-gradient(top, #AF0011 0%,#820011 100%);
-  // background: -o-linear-gradient(top, #AF0011 0%,#820011 100%);
-  // background: -ms-linear-gradient(top, #AF0011 0%,#820011 100%);
-  // background: linear-gradient(to top, #AF0011 0%,#820011 100%);
-
-  // border-radius:4px;
-  // border:1px solid #0D0D0D;
-
-  // -webkit-box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
-  // box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
-
-}
-
-header li:hover {
-  // background: #C3001D;
-  // background: -moz-linear-gradient(top, #C3001D 0%, #950119 100%);
-  // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-  // background: -webkit-linear-gradient(top, #C3001D 0%,#950119 100%);
-  // background: -o-linear-gradient(top, #C3001D 0%,#950119 100%);
-  // background: -ms-linear-gradient(top, #C3001D 0%,#950119 100%);
-  // background: linear-gradient(to top, #C3001D 0%,#950119 100%);
-}
 
 a.buttons {
   -webkit-font-smoothing: antialiased;
@@ -332,7 +293,7 @@ a.buttons:hover {
 /* Section - for main page content */
 
 section {
-  width: 650px;
+  width: 648px;
   float: right;
   padding-bottom: 50px;
 }
@@ -341,11 +302,11 @@ section {
 /* Footer */
 
 footer {
-  width: 170px;
+  width: 168px;
   float: left;
   position: fixed;
-  bottom: 10px;
-  padding-left: 50px;
+  bottom: 8px;
+  padding-left: 48px;
 }
 
 @media print, screen and (max-width: 960px) {
@@ -363,7 +324,7 @@ footer {
 
   footer {
     border-top: 1px solid #ccc;
-    margin: 0 84px 0 50px;
+    margin: 0 88px 0 48px;
     padding: 0;
   }
 
@@ -372,7 +333,7 @@ footer {
   }
 
   section {
-    padding: 20px 84px 20px 50px;
+    padding: 24px 88px 24px 48px;
     margin: 0 0 20px;
   }
 
@@ -382,8 +343,8 @@ footer {
 
   header ul {
     position: absolute;
-    right: 130px;
-    top: 84px;
+    right: 128px;
+    top: 88px;
   }
 }
 
@@ -393,17 +354,17 @@ footer {
   }
 
   header {
-    padding: 15px 20px 0;
+    padding: 16px 24px 0;
     margin-right: 0;
   }
 
   section {
-    padding: 10px 10px 10px 10px;
+    padding: 8px;
     margin: 0 0 30px;
   }
 
   footer {
-    margin: 0 0 0 30px;
+    margin: 0 0 0 32px;
   }
 
   header ul, header p.view {
@@ -418,7 +379,7 @@ footer {
   }
 
   footer {
-    margin: 0 0 0 20px;
+    margin: 0 0 0 24px;
   }
 
   footer a {

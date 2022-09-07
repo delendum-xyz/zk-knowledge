@@ -2,3 +2,37 @@
 ---
 
 @import 'jekyll-theme-dinky';
+
+header{
+  img{
+    max-width: 100%;
+    object-fit: contain;
+    //padding: 0;
+    box-sizing: border-box;
+  }
+  ul {
+    list-style: none;
+    padding-left: 16px;
+  }
+  > ul {
+    padding: 0;
+    //margin-left: -8px;
+  }
+  li {
+    list-style-type: none;
+  }
+
+
+
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  margin-left: -1px;
+}
+::-webkit-scrollbar-track {
+  background-color: #999;
+}
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 3px white;
+}
