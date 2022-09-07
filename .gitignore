@@ -1,5 +1,14 @@
 _site
 .sass-cache
-Gemfile.lock
 *.gem
 .jekyll-cache
+.DS_Store
+local/
+
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+.idea/**/contentModel.xml
