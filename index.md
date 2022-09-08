@@ -21,7 +21,7 @@ layout: default
 
 ### Contributors
 
-- [Ventali Tan](), Delendum
+- [Ventali Tan](https://github.com/ventali), Delendum
 - [Daniel Lubarov](http://daniel.lubarov.com/), Polygon Zero & Delendum
 - [Shashank Agrawal](https://shashank-agrawal.com/), Coinbase & Delendum
 - [Gautam Botrel](https://www.linkedin.com/in/gautam-botrel/), ConsenSys & Delendum
@@ -38,4 +38,4 @@ layout: default
 
 ### Contact us
 
-- Projects reviews, research collaboration: hello@delendum.xyz
+- Projects reviews, research collaboration: research@delendum.xyz
