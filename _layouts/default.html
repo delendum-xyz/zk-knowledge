@@ -1,17 +1,12 @@
 <!doctype html>
-<html lang="{{ site.lang | default: " en-US" }}">
+<html lang="{{ site.lang | default: 'en-US' }}">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   {% seo %}
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-  <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   {% include head-custom.html %}
 </head>
 
@@ -19,99 +14,87 @@
   <div class="wrapper">
     <header>
       <a href="https://delendum.xyz"><img src="https://delendum.xyz/assets/dv-logo-text.svg"></a>
-      <!-- <h1>
-        <a href="https://delendum.xyz">Delendum</a>
-      </h1> -->
-      <!-- <p class="header">{{ site.description | default: site.github.project_tagline }}</p> -->
-
-
-
       <ul>
-        <a href="{{ site.github.repository_url }}">View On GitHub</a><br/>
-        <a href="/">Home</a><br/>
-        <a href="/panel">ZKP Panel Series</a><br/><br/><hr>
-        <li><a href="zk-knowledge#hardware-acceleration">Hardware Acceleration</a>
+        <li><a href="{{ site.github.repository_url }}">View On GitHub</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/panel">ZKP Panel Series</a></li>
+      </ul>
+      <hr>
+      <ul>
+        <li><a href="/zk-knowledge#hardware-acceleration">Hardware Acceleration</a>
           <ul>
-            <li><a href="zk-knowledge#leading-problem">Leading Problem</a></li>
-            <li><a href="zk-knowledge#business-models">Business Models</a></li>
-            <li><a href="zk-knowledge#3-potential-scenarios">3 Potential Scenarios</a></li>
-            <li><a href="zk-knowledge#selection-metrics">Selection metrics</a></li>
-            <li><a href="zk-knowledge#structure-of-zkp-hardware-acceleration">Structure of ZKP Hardware Acceleration</a></li>
+            <li><a href="/zk-knowledge#leading-problem">Leading Problem</a></li>
+            <li><a href="/zk-knowledge#business-models">Business Models</a></li>
+            <li><a href="/zk-knowledge#3-potential-scenarios">3 Potential Scenarios</a></li>
+            <li><a href="/zk-knowledge#selection-metrics">Selection metrics</a></li>
+            <li><a href="/zk-knowledge#structure-of-zkp-hardware-acceleration">Structure of ZKP Hardware Acceleration</a></li>
           </ul>
         </li>
-        <li><a href="zk-knowledge#light-client">Light Client</a>
+        <li><a href="/zk-knowledge#light-client">Light Client</a>
           <ul>
-            <li><a href="zk-knowledge#leading-problem-1">Leading Problem</a></li>
-            <li><a href="zk-knowledge#technology-highlight">Technology Highlight</a></li>
-            <li><a href="zk-knowledge#commit-and-proof-schemes">Commit-and-proof Schemes</a></li>
+            <li><a href="/zk-knowledge#leading-problem-1">Leading Problem</a></li>
+            <li><a href="/zk-knowledge#technology-highlight">Technology Highlight</a></li>
+            <li><a href="/zk-knowledge#commit-and-proof-schemes">Commit-and-proof Schemes</a></li>
           </ul>
         </li>
-        <li><a href="zk-knowledge#arithmetic-fields">Arithmetic Fields</a>
+        <li><a href="/zk-knowledge#arithmetic-fields">Arithmetic Fields</a>
           <ul>
-            <li><a href="zk-knowledge#leading-problem-2">Leading Problem</a></li>
-            <li><a href="zk-knowledge#solutions">Solutions</a></li>
-            <li><a href="zk-knowledge#reference-reading">Reference Reading</a></li>
+            <li><a href="/zk-knowledge#leading-problem-2">Leading Problem</a></li>
+            <li><a href="/zk-knowledge#solutions">Solutions</a></li>
+            <li><a href="/zk-knowledge#reference-reading">Reference Reading</a></li>
           </ul>
         </li>
-        <li><a href="zk-knowledge#efficient-signatures">Efficient Signatures</a>
+        <li><a href="/zk-knowledge#efficient-signatures">Efficient Signatures</a>
           <ul>
-            <li><a href="zk-knowledge#leading-problems">Leading Problems</a></li>
-            <li><a href="zk-knowledge#suggestions">Suggestions</a></li>
+            <li><a href="/zk-knowledge#leading-problems">Leading Problems</a></li>
+            <li><a href="/zk-knowledge#suggestions">Suggestions</a></li>
           </ul>
         </li>
-        <li><a href="zk-knowledge#proof-aggregation">Proof Aggregation</a>
+        <li><a href="/zk-knowledge#proof-aggregation">Proof Aggregation</a>
           <ul>
-            <li><a href="zk-knowledge#leading-problem-3">Leading Problem</a></li>
-            <li><a href="zk-knowledge#technology-highlight-1">Technology Highlight</a></li>
-            <li><a href="zk-knowledge#proof-aggregation-schemes">Proof Aggregation Schemes</a></li>
-            <li><a href="zk-knowledge#current-research-progress">Current Research Progress</a></li>
-            <li><a href="zk-knowledge#reference-reading-1">Reference Reading</a></li>
+            <li><a href="/zk-knowledge#leading-problem-3">Leading Problem</a></li>
+            <li><a href="/zk-knowledge#technology-highlight-1">Technology Highlight</a></li>
+            <li><a href="/zk-knowledge#proof-aggregation-schemes">Proof Aggregation Schemes</a></li>
+            <li><a href="/zk-knowledge#current-research-progress">Current Research Progress</a></li>
+            <li><a href="/zk-knowledge#reference-reading-1">Reference Reading</a></li>
           </ul>
         </li>
-        <li><a href="zk-knowledge#vulnerabilities">Vulnerabilities</a>
+        <li><a href="/zk-knowledge#vulnerabilities">Vulnerabilities</a>
           <ul>
-            <li><a href="zk-knowledge#vulnerabilities-that-break-completeness">Completeness</a></li>
-            <li><a href="zk-knowledge#vulnerabilities-that-break-soundness">Soundness</a></li>
-            <li><a href="zk-knowledge#vulnerabilities-that-break-the-zero-knowledge-property">Zero-knowledge property</a></li>
-            <li><a href="zk-knowledge#general-vulnerabilities-affecting-zero-knowledge-enabled-systems">General System
+            <li><a href="/zk-knowledge#vulnerabilities-that-break-completeness">Completeness</a></li>
+            <li><a href="/zk-knowledge#vulnerabilities-that-break-soundness">Soundness</a></li>
+            <li><a href="/zk-knowledge#vulnerabilities-that-break-the-zero-knowledge-property">Zero-knowledge property</a></li>
+            <li><a href="/zk-knowledge#general-vulnerabilities-affecting-zero-knowledge-enabled-systems">General System
                 Vulnerabilities</a></li>
           </ul>
         </li>
-        <li><a href="zk-knowledge#licensing">Licensing</a></li>
+        <li><a href="/zk-knowledge#licensing">Licensing</a></li>
         <br/>
-        <li><a href="zk-knowledge#verifiable-delay-functions-vdf">Verifiable Delay Functions (VDF)</a>
+        <li><a href="/zk-knowledge#verifiable-delay-functions-vdf">Verifiable Delay Functions (VDF)</a>
           <ul>
-            <li><a href="zk-knowledge#leading-problems-1">Leading Problems</a></li>
-            <li><a href="zk-knowledge#vdf-requirements">VDF Requirements</a></li>
-            <li><a href="zk-knowledge#techniques">Techniques</a></li>
-            <li><a href="zk-knowledge#applications">Applications</a></li>
-            <li><a href="zk-knowledge#great-resources">Great Resources</a></li>
+            <li><a href="/zk-knowledge#leading-problems-1">Leading Problems</a></li>
+            <li><a href="/zk-knowledge#vdf-requirements">VDF Requirements</a></li>
+            <li><a href="/zk-knowledge#techniques">Techniques</a></li>
+            <li><a href="/zk-knowledge#applications">Applications</a></li>
+            <li><a href="/zk-knowledge#great-resources">Great Resources</a></li>
           </ul>
         </li>
-        <li><a href="zk-knowledge#formal-verification">Formal Verification</a>
+        <li><a href="/zk-knowledge#formal-verification">Formal Verification</a>
           <ul>
-            <li><a href="zk-knowledge#leading-problem-4">Leading Problem</a></li>
-            <li><a href="zk-knowledge#techniques-1">Techniques</a></li>
-            <li><a href="zk-knowledge#formal-verification-for-zk-circuits">Formal Verification for ZK Circuits</a></li>
-            <li><a href="zk-knowledge#formally-verified-programs">Formally Verified Programs</a></li>
-            <li><a href="zk-knowledge#the-state-of-current-progress">The State of Current Progress</a></li>
-            <li><a href="zk-knowledge#future-research-directions">Future Research Directions</a></li>
+            <li><a href="/zk-knowledge#leading-problem-4">Leading Problem</a></li>
+            <li><a href="/zk-knowledge#techniques-1">Techniques</a></li>
+            <li><a href="/zk-knowledge#formal-verification-for-zk-circuits">Formal Verification for ZK Circuits</a></li>
+            <li><a href="/zk-knowledge#formally-verified-programs">Formally Verified Programs</a></li>
+            <li><a href="/zk-knowledge#the-state-of-current-progress">The State of Current Progress</a></li>
+            <li><a href="/zk-knowledge#future-research-directions">Future Research Directions</a></li>
           </ul>
         </li>
       </ul>
-
-
     </header>
-
     <section>
       {{ content }}
     </section>
-
-    <!-- <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer> -->
   </div>
-  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 </body>
 
 </html>
