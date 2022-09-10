@@ -515,8 +515,8 @@ layout: default
 - Low-level tech: discrete log group
 - Assumptions: discrete log
 - Resources:
-    - Lecture by Dan Boneh: https://youtu.be/IkNZWJFcfcU
-    - Overview by Bill Buchanan: https://youtu.be/J9SOk9dIOCk
+    - Lecture by Dan Boneh: [https://youtu.be/IkNZWJFcfcU](https://youtu.be/IkNZWJFcfcU)
+    - Overview by Bill Buchanan: [https://youtu.be/J9SOk9dIOCk](https://youtu.be/J9SOk9dIOCk)
 
 #### Kate Commitments (KZG)
 - A type of polynomial commitment scheme that employs structured reference string (SRS) and require trusted setup, thus producing toxic waste
@@ -534,18 +534,18 @@ layout: default
     - zk-SNARKs
     - [Data Availability Sampling](https://ethresear.ch/t/an-alternative-low-degreeness-proof-using-polynomial-commitment-schemes/6649)
 - Libraries:
-    - https://github.com/proxima-one/kzg (Rust)
-    - https://github.com/sifraitech/kzg (Rust)
-    - https://github.com/protolambda/go-kzg (Go)
-    - https://github.com/benjaminion/c-kzg (C)
-    - https://github.com/mratsim/constantine/tree/master/research/kzg_poly_commit (Nim)
-    - https://github.com/Nashatyrev/jc-kzg (Java)
+    - [https://github.com/proxima-one/kzg](https://github.com/proxima-one/kzg) (Rust)
+    - [https://github.com/sifraitech/kzg](https://github.com/sifraitech/kzg) (Rust)
+    - [https://github.com/protolambda/go-kzg](https://github.com/protolambda/go-kzg) (Go)
+    - [https://github.com/benjaminion/c-kzg](https://github.com/benjaminion/c-kzg) (C)
+    - [https://github.com/mratsim/constantine/tree/master/research/kzg_poly_commit](https://github.com/mratsim/constantine/tree/master/research/kzg_poly_commit) (Nim)
+    - [https://github.com/Nashatyrev/jc-kzg](https://github.com/Nashatyrev/jc-kzg) (Java)
 - Resources:
-    - General overview: https://dankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.html
+    - General overview: [https://dankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.html](https://dankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.html)
     - Trusted setup:
-        - https://vitalik.ca/general/2022/03/14/trustedsetup.html
-        - https://github.com/ethereum/kzg-ceremony-specs
-    - Math simply put: https://twitter.com/bkiepuszewski/status/1518163771788824576
+        - [https://vitalik.ca/general/2022/03/14/trustedsetup.html](https://vitalik.ca/general/2022/03/14/trustedsetup.html)
+        - [https://github.com/ethereum/kzg-ceremony-specs](https://github.com/ethereum/kzg-ceremony-specs)
+    - Math simply put: [https://twitter.com/bkiepuszewski/status/1518163771788824576](https://twitter.com/bkiepuszewski/status/1518163771788824576)
 
 #### Inner Product Arguments (IPA)
 - A modification of Pedersen commitments to allow polynomial commitments
@@ -557,11 +557,11 @@ layout: default
     - Halo2
     - [Kimchi](https://o1-labs.github.io/proof-systems/plonk/inner_product.html)
 - Libraries:
-    - https://github.com/arnaucube/ipa-rs (Rust)
-    - https://github.com/arkworks-rs/poly-commit/tree/master/src/ipa_pc (Rust)
+    - [https://github.com/arnaucube/ipa-rs](https://github.com/arnaucube/ipa-rs) (Rust)
+    - [https://github.com/arkworks-rs/poly-commit/tree/master/src/ipa_pc](https://github.com/arkworks-rs/poly-commit/tree/master/src/ipa_pc) (Rust)
 - Resources:
-    - General overview: https://dankradfeist.de/ethereum/2021/07/27/inner-product-arguments.html
-    - Talk: https://youtu.be/dD_0Vn4BhmI
+    - General overview: [https://dankradfeist.de/ethereum/2021/07/27/inner-product-arguments.html](https://dankradfeist.de/ethereum/2021/07/27/inner-product-arguments.html)
+    - Talk: [https://youtu.be/dD_0Vn4BhmI](https://youtu.be/dD_0Vn4BhmI)
 
 #### Fast Reed-Solomon Interactive Oracle Proof of Proximity (FRI)
 - Based around [Reed-Solomon](https://youtu.be/1pQJkt7-R4Q) erasure coding
@@ -572,8 +572,8 @@ layout: default
     - STARKs
     - Plonky2
 - Resources:
-    - General overview: https://aszepieniec.github.io/stark-anatomy/fri.html
-    - Vitalik's deep dive: https://vitalik.ca/general/2017/11/22/starks_part_2.html
+    - General overview: [https://aszepieniec.github.io/stark-anatomy/fri.html](https://aszepieniec.github.io/stark-anatomy/fri.html)
+    - Vitalik's deep dive: [https://vitalik.ca/general/2017/11/22/starks_part_2.html](https://vitalik.ca/general/2017/11/22/starks_part_2.html)
 - Assumptions: collision-resistant hash function
 
 #### Diophantine Arguments of Knowledge (DARK)
@@ -581,7 +581,7 @@ layout: default
 - Requires trusted setup if using RSA groups, not if using Class Groups
 - Much slower verification time compared with others (O(n))
 - Resources:
-    - Paper: https://eprint.iacr.org/2019/1229.pdf
+    - Paper: [https://eprint.iacr.org/2019/1229.pdf](https://eprint.iacr.org/2019/1229.pdf)
 
 
 #### Commitment Schemes Comparison
@@ -617,24 +617,24 @@ layout: default
 
 #### Used in:
 - Confidential TX for Bitcoin:
-    - https://elementsproject.org/features/confidential-transactions
+    - [https://elementsproject.org/features/confidential-transactions](https://elementsproject.org/features/confidential-transactions)
 - Monero
-    - https://medium.com/digitalassetresearch/monero-becomes-bulletproof-f98c6408babf
+    - [https://medium.com/digitalassetresearch/monero-becomes-bulletproof-f98c6408babf](https://medium.com/digitalassetresearch/monero-becomes-bulletproof-f98c6408babf)
 - Stellar Shielded Tx (Cloak)
-    - https://github.com/stellar/slingshot/blob/main/spacesuit/spec.md
+    - [https://github.com/stellar/slingshot/blob/main/spacesuit/spec.md](https://github.com/stellar/slingshot/blob/main/spacesuit/spec.md)
 
 #### Implementations:
-- https://github.com/dalek-cryptography/bulletproofs (Rust)
-- https://github.com/adjoint-io/bulletproofs (Haskell)
-- https://github.com/bbuenz/BulletProofLib (Java)
+- [https://github.com/dalek-cryptography/bulletproofs](https://github.com/dalek-cryptography/bulletproofs) (Rust)
+- [https://github.com/adjoint-io/bulletproofs](https://github.com/adjoint-io/bulletproofs) (Haskell)
+- [https://github.com/bbuenz/BulletProofLib](https://github.com/bbuenz/BulletProofLib) (Java)
 
 #### Examples:
-- https://github.com/lovesh/bulletproofs-r1cs-gadgets
-- https://github.com/MarcKloter/bulletproofs_gadgets
+- [https://github.com/lovesh/bulletproofs-r1cs-gadgets](https://github.com/lovesh/bulletproofs-r1cs-gadgets)
+- [https://github.com/MarcKloter/bulletproofs_gadgets](https://github.com/MarcKloter/bulletproofs_gadgets)
 
 #### Resources:
-- https://crypto.stanford.edu/bulletproofs/
-- https://youtu.be/gZjDKgR4dw8?t=1045
+- [https://crypto.stanford.edu/bulletproofs/](https://crypto.stanford.edu/bulletproofs/)
+- [https://youtu.be/gZjDKgR4dw8?t=1045](https://youtu.be/gZjDKgR4dw8?t=1045)
 
 
 ### Maurer (sigma) Proofs
@@ -659,26 +659,26 @@ layout: default
 
 #### Used in:
 - Verifiable Random Functions
-    - https://medium.com/asecuritysite-when-bob-met-alice/verifiable-random-functions-4563d6eb17ab
+    - [https://medium.com/asecuritysite-when-bob-met-alice/verifiable-random-functions-4563d6eb17ab](https://medium.com/asecuritysite-when-bob-met-alice/verifiable-random-functions-4563d6eb17ab)
 - Signal [Algebraic MACs](https://smeiklej.com/files/ccs14.pdf) for or group chats:
-    - https://signal.org/blog/signal-private-group-system/
+    - [https://signal.org/blog/signal-private-group-system/](https://signal.org/blog/signal-private-group-system/)
 - Dleq proofs in the adaptor signatures
-    - https://github.com/LLFourn/one-time-VES/blob/master/main.pdf
+    - [https://github.com/LLFourn/one-time-VES/blob/master/main.pdf](https://github.com/LLFourn/one-time-VES/blob/master/main.pdf)
 - ElGamal encryption in the [Cryptography for #metoo](https://petsymposium.org/2019/files/papers/issue3/popets-2019-0054.pdf)
 
 #### Libraries:
-- https://github.com/LLFourn/secp256kfun/tree/master/sigma_fun (Rust)
-- https://docs.rs/zkp/0.7.0/zkp (Rust)
-- https://github.com/xlab-si/emmy (Go)
-- https://pkg.go.dev/go.dedis.ch/kyber/v4/proof (Go)
-- https://github.com/cryptobiu/libscapi (C++)
-- https://github.com/spring-epfl/zksk (Python)
+- [https://github.com/LLFourn/secp256kfun/tree/master/sigma_fun](https://github.com/LLFourn/secp256kfun/tree/master/sigma_fun) (Rust)
+- [https://docs.rs/zkp/0.7.0/zkp](https://docs.rs/zkp/0.7.0/zkp) (Rust)
+- [https://github.com/xlab-si/emmy](https://github.com/xlab-si/emmy) (Go)
+- [https://pkg.go.dev/go.dedis.ch/kyber/v4/proof](https://pkg.go.dev/go.dedis.ch/kyber/v4/proof) (Go)
+- [https://github.com/cryptobiu/libscapi](https://github.com/cryptobiu/libscapi) (C++)
+- [https://github.com/spring-epfl/zksk](https://github.com/spring-epfl/zksk) (Python)
 
 #### Resources
-- Overview: https://medium.com/@loveshharchandani/zero-knowledge-proofs-with-sigma-protocols-91e94858a1fb
-- Blog post about Maurer generalization of dlog-based Sigma protocols: https://cronokirby.com/posts/2022/08/the-paper-that-keeps-showing-up/
-- Math: https://www.win.tue.nl/~berry/CryptographicProtocols/LectureNotes.pdf (pp. 47-61)
-- Forum discussion: https://community.zkproof.org/t/standardizing-sigma-protocols/471
+- Overview: [https://medium.com/@loveshharchandani/zero-knowledge-proofs-with-sigma-protocols-91e94858a1fb](https://medium.com/@loveshharchandani/zero-knowledge-proofs-with-sigma-protocols-91e94858a1fb)
+- Blog post about Maurer generalization of dlog-based Sigma protocols: [https://cronokirby.com/posts/2022/08/the-paper-that-keeps-showing-up/](https://cronokirby.com/posts/2022/08/the-paper-that-keeps-showing-up/)
+- Math: [https://www.win.tue.nl/~berry/CryptographicProtocols/LectureNotes.pdf](https://www.win.tue.nl/~berry/CryptographicProtocols/LectureNotes.pdf) (pp. 47-61)
+- Forum discussion: [https://community.zkproof.org/t/standardizing-sigma-protocols/471](https://community.zkproof.org/t/standardizing-sigma-protocols/471)
 
 
 ### Halo 2
@@ -708,23 +708,23 @@ layout: default
 - [Dark Fi L1](https://dark.fi/)
 
 #### Libraries:
-- https://github.com/zcash/halo2 - original (IPA)
+- [https://github.com/zcash/halo2](https://github.com/zcash/halo2) - original (IPA)
 - [privacy-scaling-explorations/halo2wrong](https://github.com/privacy-scaling-explorations/halo2wrong) - replaces IPA to KZG
-- https://github.com/Orbis-Tertius/halo2 - replaces IPA to FRI (WIP)
+- [https://github.com/Orbis-Tertius/halo2](https://github.com/Orbis-Tertius/halo2) - replaces IPA to FRI (WIP)
 
 #### Examples:
-- https://github.com/nikkolasg/halo2-circuits
-- https://github.com/icemelon/halo2-tutorial
-- https://github.com/weijiekoh/halo2_circuits
-- https://github.com/akinovak/halo2-semaphore
-- https://github.com/timoth-y/halo2-encryption
+- [https://github.com/nikkolasg/halo2-circuits](https://github.com/nikkolasg/halo2-circuits)
+- [https://github.com/icemelon/halo2-tutorial](https://github.com/icemelon/halo2-tutorial)
+- [https://github.com/weijiekoh/halo2_circuits](https://github.com/weijiekoh/halo2_circuits)
+- [https://github.com/akinovak/halo2-semaphore](https://github.com/akinovak/halo2-semaphore)
+- [https://github.com/timoth-y/halo2-encryption](https://github.com/timoth-y/halo2-encryption)
 
 #### Resources:
-- General overview: https://electriccoin.co/blog/explaining-halo-2/
-- Talk: https://youtu.be/KdkVTEHUxgo?t=399
-- Math: https://vitalik.ca/general/2021/11/05/halo.html
-- Awesome: https://github.com/adria0/awesome-halo2
-- Ecosystem showcase: https://youtu.be/JJi2TT2Ahp0
+- General overview: [https://electriccoin.co/blog/explaining-halo-2/](https://electriccoin.co/blog/explaining-halo-2/)
+- Talk: [https://youtu.be/KdkVTEHUxgo?t=399](https://youtu.be/KdkVTEHUxgo?t=399)
+- Math: [https://vitalik.ca/general/2021/11/05/halo.html](https://vitalik.ca/general/2021/11/05/halo.html)
+- Awesome: [https://github.com/adria0/awesome-halo2](https://github.com/adria0/awesome-halo2)
+- Ecosystem showcase: [https://youtu.be/JJi2TT2Ahp0](https://youtu.be/JJi2TT2Ahp0)
 
 ### Plonky2
 - Combines FRI with PLONKish arithmetization and needs *no trusted setup*
@@ -746,19 +746,19 @@ layout: default
 
 #### Used in:
 - Polygon Zero
-    - https://blog.polygon.technology/introducing-plonky2
+    - [https://blog.polygon.technology/introducing-plonky2](https://blog.polygon.technology/introducing-plonky2)
 
 ### Libraries
-- https://github.com/mir-protocol/plonky2
+- [https://github.com/mir-protocol/plonky2](https://github.com/mir-protocol/plonky2)
 
 #### Examples:
-- https://github.com/qope/plonky2-examples
-- https://github.com/recmo/proto-ecdsa-plonky2
-- https://github.com/mir-protocol/plonky2-semaphore
-- https://github.com/timoth-y/plonky2-encryption
+- [https://github.com/qope/plonky2-examples](https://github.com/qope/plonky2-examples)
+- [https://github.com/recmo/proto-ecdsa-plonky2](https://github.com/recmo/proto-ecdsa-plonky2)
+- [https://github.com/mir-protocol/plonky2-semaphore](https://github.com/mir-protocol/plonky2-semaphore)
+- [https://github.com/timoth-y/plonky2-encryption](https://github.com/timoth-y/plonky2-encryption)
 
 ### Resources
-- https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf
+- [https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf](https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf)
 
 
 ### MPC-in-the-head
@@ -800,13 +800,13 @@ layout: default
     - The idea being that you would minimize latency for the transaction creator, where they create the proof as fast as possible, and then another entity could compress the proof with other techniques.
 
 #### Libraries:
-- https://github.com/trailofbits/reverie/tree/stacked-ikos (Rust)
-- https://github.com/cronokirby/boo-hoo (Rust)
-- https://github.com/cronokirby/Rem-Boo (Rust)
+- [https://github.com/trailofbits/reverie/tree/stacked-ikos](https://github.com/trailofbits/reverie/tree/stacked-ikos) (Rust)
+- [https://github.com/cronokirby/boo-hoo](https://github.com/cronokirby/boo-hoo) (Rust)
+- [https://github.com/cronokirby/Rem-Boo](https://github.com/cronokirby/Rem-Boo) (Rust)
 
 #### Resources:
 - Podcast episodes:
-    - https://cronokirby.substack.com/p/mpc-in-the-head-special
-    - https://cronokirby.substack.com/p/mpc-in-the-head-2-thoughts-about
-- Great intro paper (ZKBoo): https://eprint.iacr.org/2016/163.pdf
-- Security analysis: [https://eprint.iacr.org/2021/437.pdf](https://t.co/4ZKLqD2Z59)
+    - [https://cronokirby.substack.com/p/mpc-in-the-head-special](https://cronokirby.substack.com/p/mpc-in-the-head-special)
+    - [https://cronokirby.substack.com/p/mpc-in-the-head-2-thoughts-about](https://cronokirby.substack.com/p/mpc-in-the-head-2-thoughts-about)
+- Great intro paper (ZKBoo): [https://eprint.iacr.org/2016/163.pdf](https://eprint.iacr.org/2016/163.pdf)
+- Security analysis: [https://eprint.iacr.org/2021/437.pdf](https://eprint.iacr.org/2021/437.pdf)
