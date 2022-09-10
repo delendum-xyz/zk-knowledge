@@ -520,10 +520,10 @@ layout: default
 
 #### Kate Commitments (KZG)
 - A type of polynomial commitment scheme that employs structured reference string (SRS) and require trusted setup, thus producing toxic waste
-- The verifier asks “what is the value of the polynomial at z”
+- The verifier asks "what is the value of the polynomial at z"
 - The prover responds with $y$ and a proof $h(s)$ using:
     - the polynomial $f()$
-    - the commitment - $f(s)$
+    - the commitment - $f(s)$ where $s$ is a secret point (toxic waste)
     - the proof - $h(s)$
     - the coordinates $z, y$
 - The verifier is able to convince themselves this is true even if they don’t know $f()$
@@ -589,33 +589,30 @@ layout: default
 |---|---|---|---|---|---|
 | Type| Scalar | Polynomial| Polynomial | Polynomial| Polynomial|
 | Low-level tech | Discrete log group | Pairing group | Discrete log group | Hash function | Unknown order group |
-| Setup     | $G,H$ generator points and random scalar $r$ | G1,G2 groups, g1,g2 generators, e pairing function, s_k secret value in F | G elliptic curve, g^n independent elements in G | H hash function, w unity root | N unknown order, g random in N, q large integer |
+| Setup     | $G,H$ generator points and random scalar $r$ | $G1$,$G2$ groups, $g1$,$g2$ generators, $e$ pairing function, $s_k$ secret value in $F$ | $G$ elliptic curve, $g^n$ independent elements in $G$ | $H$ hash function, $w$ unity root | $N$ unknown order, $g$ random in $N$, $q$ large integer |
 | Commitment | $aG+rH$ | $(a_0s^0+...a_ns^n)g_1$ | $a_0g_0+...+a_ng_n$ | $H(f(w^0), ..., f(w^n))$ | $(a_0q^0+...a_nq^n)g$ |
 | Proof size | $O(N)$ | $O(1)$ | $O(log(N))$ | $O(log^2(N))$ | $O(log(N))$ |
 | Verify time | $O(N)$ | $O(1)$ | $O(log(N))$ | $O(log^2(N))$ | $O(N)$ |
 | Prove time | $O(N)$ | $O(N)$ | $O(N)$ | $O(N*log^2(N))$ | $O(N)$ |
 
 ### Bulletproofs
-- Short NIZK that requires no trusted setup
-- Low-level tech: Pedersen commitments
-- Uses its own constraint system, which is easily convertible to R1CS
-- Assumptions: discrete log
+- Short NIZK that requires no trusted setup.
+- Low-level tech: Pedersen commitments.
+- Uses its own constraint system, which is easily convertible to R1CS.
+- Assumptions: discrete log.
 
 #### Performance:
-- Prover time: O(N * log(N))
-- Verifier time: O(N)
-- Proof size: O(log(N))
+- Prover time: $O(N * log(N))$
+- Verifier time: $O(N)$
+- Proof size: $O(log(N))$
 - Works best with `dalek` curve having a Ristretto group (a compressed group of Ed25519 points).
 
-#### Best fit for:
+#### Application scope:
 - Range proofs (take only 600 bytes)
 - Inner product proofs
 - Verifiable secret shuffle
 - Intermediary checks in MPC protocols
 - Aggregated and distributed (with many private inputs) proofs
-
-#### Poor choice for:
-- complex arbitrary statements that are verified on-chain
 
 #### Used in:
 - Confidential TX for Bitcoin:
@@ -630,30 +627,34 @@ layout: default
 - https://github.com/adjoint-io/bulletproofs (Haskell)
 - https://github.com/bbuenz/BulletProofLib (Java)
 
+#### Examples:
+- https://github.com/lovesh/bulletproofs-r1cs-gadgets
+- https://github.com/MarcKloter/bulletproofs_gadgets
+
 #### Resources:
 - https://crypto.stanford.edu/bulletproofs/
 - https://youtu.be/gZjDKgR4dw8?t=1045
 
 
 ### Maurer (sigma) Proofs
-- Short proof that needs no trusted setup
-- Dlog-based variant of the interactive Sigma protocols
-- Require a constant number (3) of public-key operations
-- Can be made non-interactive using Fiat-Shamir transform
-- Generalize Schnorr proofs to arbitrary linear functions
-- Multiple Sigma proofs can be combined to form a new proof (composition)
-    - if you have two Sigma protocols for proving statements `A` and `B` you can compose them into a protocol for proving `A or B`, `A and B`, `eq(A,B)`, `all(n,A)`, `eq-all(n,A)`
-    - `n` must be known at compile time
+- Short proof that needs no trusted setup.
+- Dlog-based variant of the interactive Sigma protocols.
+- Require a constant number (3) of public-key operations.
+- Can be made non-interactive using Fiat-Shamir transform.
+- Generalize Schnorr proofs to arbitrary linear functions.
+- Multiple Sigma proofs can be combined to form a new proof (composition):
+    - if you have two Sigma protocols for proving statements `A` and `B` you can compose them into a protocol for proving `A or B`, `A and B`, `eq(A,B)`, `all(n,A)`, `eq-all(n,A)`;
+    - `n` must be known at compile time.
 - Assumptions:
-    - discrete log
-    - honest verifier or Fiat-Shamir
+    - discrete log,
+    - honest verifier or Fiat-Shamir.
 
 #### Application scope
-- Discrete log (dlog) proofs, prove knowledge of x such that g^x = y for publicly known values g, y
-- One-of-many dlogs, discrete log equality (dleq)
-- Range proofs
-- Knowledge of message and randomness in a Pedersen commitment, equality of message in 2 Pedersen commitments
-- Pedersen commitment and ciphertext ([twisted ElGamal](https://github.com/yuchen1024/Twisted_ElGamal_PKE/blob/master/doc/Twisted_ElGamal_Report.pdf)) holds the same message
+- Discrete log (dlog) proofs, prove knowledge of x such that g^x = y for publicly known values g, y.
+- One-of-many dlogs, discrete log equality (dleq).
+- Range proofs.
+- Knowledge of message and randomness in a Pedersen commitment, equality of message in 2 Pedersen commitments.
+- Pedersen commitment and ciphertext ([twisted ElGamal](https://github.com/yuchen1024/Twisted_ElGamal_PKE/blob/master/doc/Twisted_ElGamal_Report.pdf)) holds the same message.
 
 #### Used in:
 - Verifiable Random Functions
@@ -664,39 +665,40 @@ layout: default
     - https://github.com/LLFourn/one-time-VES/blob/master/main.pdf
 - ElGamal encryption in the [Cryptography for #metoo](https://petsymposium.org/2019/files/papers/issue3/popets-2019-0054.pdf)
 
-#### Libraries
-- https://github.com/LLFourn/secp256kfun/tree/master/sigma_fun (rust)
-- https://docs.rs/zkp/0.7.0/zkp (rust)
-- https://github.com/xlab-si/emmy (go)
-- https://pkg.go.dev/go.dedis.ch/kyber/v4/proof (go)
-- https://github.com/cryptobiu/libscapi (c++)
-- https://github.com/spring-epfl/zksk (python)
+#### Libraries:
+- https://github.com/LLFourn/secp256kfun/tree/master/sigma_fun (Rust)
+- https://docs.rs/zkp/0.7.0/zkp (Rust)
+- https://github.com/xlab-si/emmy (Go)
+- https://pkg.go.dev/go.dedis.ch/kyber/v4/proof (Go)
+- https://github.com/cryptobiu/libscapi (C++)
+- https://github.com/spring-epfl/zksk (Python)
 
 #### Resources
-- overview: https://medium.com/@loveshharchandani/zero-knowledge-proofs-with-sigma-protocols-91e94858a1fb
-- blog about Maurer generalization of dlog-based Sigma protocols: https://cronokirby.com/posts/2022/08/the-paper-that-keeps-showing-up/
-- math: https://www.win.tue.nl/~berry/CryptographicProtocols/LectureNotes.pdf (pp. 47-61)
-- forum discussion: https://community.zkproof.org/t/standardizing-sigma-protocols/471
+- Overview: https://medium.com/@loveshharchandani/zero-knowledge-proofs-with-sigma-protocols-91e94858a1fb
+- Blog post about Maurer generalization of dlog-based Sigma protocols: https://cronokirby.com/posts/2022/08/the-paper-that-keeps-showing-up/
+- Math: https://www.win.tue.nl/~berry/CryptographicProtocols/LectureNotes.pdf (pp. 47-61)
+- Forum discussion: https://community.zkproof.org/t/standardizing-sigma-protocols/471
+
 
 ### Halo 2
-- Combines efficient accumulation scheme with [PLONKish](https://twitter.com/feministPLT/status/1413815927704014850) arithmetization and needs _no trusted setup_
-- Superchargable with pre-computed lookup tables and custom gates
-- Flourishing developer ecosystem actively developed tooling
-- Low-level tech: IPA commitments
-- Assumptions: discrete log
+- Combines an efficient accumulation scheme with [PLONKish](https://twitter.com/feministPLT/status/1413815927704014850) arithmetization and needs no trusted setup.
+- Superchargable with pre-computed lookup tables and custom gates.
+- Flourishing developer ecosystem actively developed tooling.
+- Low-level tech: IPA commitments.
+- Assumptions: discrete log.
 
 #### Performance:
 - Allows to choose (codewords rate):
-    - fewer rows => fast prover
-    - fewer columns and constraints => fast verifier
-- Prover time: O(N * log(N))
-- Verifier time: O(1) > PLONK+KZG > Groth'16
-- Proof size: O(log(N)
+    - fewer rows => fast prover,
+    - fewer columns and constraints => fast verifier.
+- Prover time: $O(N * log(N))$
+- Verifier time: $O(1)$ > PLONK+KZG > Groth'16
+- Proof size: $O(log(N)$
 
 #### Application scope:
-- arbitrary verifiable computation
-- recursive proof composition
-- circuit-optimized hashing based on lookup-based Sinsemilla function
+- Arbitrary verifiable computation;
+- Recursive proof composition;
+- Circuit-optimized hashing based on lookup-based [Sinsemilla](https://zcash.github.io/halo2/design/gadgets/sinsemilla.html) hash function.
 
 #### Used in:
 - [Zcash Orchard Shielded Protocol](https://electriccoin.co/blog/announcing-zip-224-bringing-halo-2-to-zcash/) [\[ZIP 224\]](https://github.com/zcash/zips/issues/435)
@@ -704,12 +706,19 @@ layout: default
 - [Orbis ZK-Rollup](https://github.com/Orbis-Tertius) on Cardano
 - [Dark Fi L1](https://dark.fi/)
 
-### Libraries:
+#### Libraries:
 - https://github.com/zcash/halo2 - original (IPA)
 - [privacy-scaling-explorations/halo2wrong](https://github.com/privacy-scaling-explorations/halo2wrong) - replaces IPA to KZG
 - https://github.com/Orbis-Tertius/halo2 - replaces IPA to FRI (WIP)
 
-### Resources:
+#### Examples:
+- https://github.com/nikkolasg/halo2-circuits
+- https://github.com/icemelon/halo2-tutorial
+- https://github.com/weijiekoh/halo2_circuits
+- https://github.com/akinovak/halo2-semaphore
+- https://github.com/timoth-y/halo2-encryption
+
+#### Resources:
 - General overview: https://electriccoin.co/blog/explaining-halo-2/
 - Talk: https://youtu.be/KdkVTEHUxgo?t=399
 - Math: https://vitalik.ca/general/2021/11/05/halo.html
@@ -741,6 +750,12 @@ layout: default
 ### Libraries
 - https://github.com/mir-protocol/plonky2
 
+#### Examples:
+- https://github.com/qope/plonky2-examples
+- https://github.com/recmo/proto-ecdsa-plonky2
+- https://github.com/mir-protocol/plonky2-semaphore
+- https://github.com/timoth-y/plonky2-encryption
+
 ### Resources
 - https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf
 
@@ -770,16 +785,18 @@ layout: default
 - Prover time: $O(n)$ - much less than with SNARKs
 - Verifier time: $O(n)$
 - Proof size: $O(n)$
-- The overhead of doing computation verifiably is much lower ($1/{n_{reps}*n_{parties}}$ => ~1/600) than that of SNARKs (~1/millions)
-- Additions are free, but multiplications needed to be simulated many times
-- With pre-processing it's possible to reduce size and verifier complexity at the prover's expense
+- The overhead of doing computation verifiably is much lower ($1/{n_{reps}*n_{parties}}$ => ~1/600) than that of SNARKs (~1/millions).
+- Additions are free, but multiplications needed to be simulated many times.
+- With pre-processing it's possible to reduce size and verifier complexity at the prover's expense.
 
 #### Application scope:
 - Complex programs that are poorly translatable to arithmetic circuits, e.g. SHA hashes.
-- ML and other types of approximate calculations, that do floating point arithmetic. (can be done bit-by-bit in boolean circuits)
+- ML and other types of approximate calculations, that do floating point arithmetic (can be done bit-by-bit in boolean circuits).
 - Delegated proving:
     - You want to create a SNARK of some statement, but don't want to compute it yourself nor to reveal the witness to a third party.
-    - One thing you could do is create a MPCith proof and then the delegated party would create a new proof which verifies this one
+    - One thing you could do is create a MPCith proof and then the delegated party would create a new proof which verifies this one.
+- Optimized confidential transactions using delegated proving
+    - The idea being that you would minimize latency for the transaction creator, where they create the proof as fast as possible, and then another entity could compress the proof with other techniques.
 
 #### Libraries:
 - https://github.com/trailofbits/reverie/tree/stacked-ikos (Rust)
