@@ -720,6 +720,7 @@ layout: default
 - [https://github.com/timoth-y/halo2-encryption](https://github.com/timoth-y/halo2-encryption)
 
 #### Resources:
+
 - General overview: [https://electriccoin.co/blog/explaining-halo-2/](https://electriccoin.co/blog/explaining-halo-2/)
 - Talk: [https://youtu.be/KdkVTEHUxgo?t=399](https://youtu.be/KdkVTEHUxgo?t=399)
 - Math: [https://vitalik.ca/general/2021/11/05/halo.html](https://vitalik.ca/general/2021/11/05/halo.html)
@@ -727,6 +728,7 @@ layout: default
 - Ecosystem showcase: [https://youtu.be/JJi2TT2Ahp0](https://youtu.be/JJi2TT2Ahp0)
 
 ### Plonky2
+
 - Combines FRI with PLONKish arithmetization and needs *no trusted setup*
 - Extensively optimized for modern processors (both x86-64 and ARM64) using:
     - [Ed448-Goldilocks](https://eprint.iacr.org/2015/625.pdf), whose modulus allows working on 64-bit fields
@@ -736,33 +738,39 @@ layout: default
 - Assumptions: collision-resistant hash function
 
 #### Performance:
+
 - Prover time: $$O(log^2(N))$$ - 300ms/20s (depending on the codewords rate)
 - Verifier time: $$O(log^2(N))$$
 - Proof size: $$O(N*log^2(N))$$ - 500kb/43kb (depending on the codewords rate)
 
 #### Application scope:
+
 - Recursive proof composition
 - Circuit optimization using TurboPLONK's custom gates
 
 #### Used in:
-- Polygon Zero
-    - [https://blog.polygon.technology/introducing-plonky2](https://blog.polygon.technology/introducing-plonky2)
 
-### Libraries
+- [Polygon Zero](https://blog.polygon.technology/introducing-plonky2)
+- [Maru Network](https://proxima-one.github.io/maru/introduction.html)
+
+#### Libraries
 - [https://github.com/mir-protocol/plonky2](https://github.com/mir-protocol/plonky2)
 
 #### Examples:
+
 - [https://github.com/qope/plonky2-examples](https://github.com/qope/plonky2-examples)
 - [https://github.com/recmo/proto-ecdsa-plonky2](https://github.com/recmo/proto-ecdsa-plonky2)
 - [https://github.com/mir-protocol/plonky2-semaphore](https://github.com/mir-protocol/plonky2-semaphore)
 - [https://github.com/timoth-y/plonky2-encryption](https://github.com/timoth-y/plonky2-encryption)
 
-### Resources
+#### Resources
+
 - [https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf](https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf)
 - [https://proxima-one.github.io/maru/background-knowledge/plonky2.html](https://proxima-one.github.io/maru/background-knowledge/plonky2.html)
 
 
 ### MPC-in-the-head
+
 #### Background - MPC:
 - MPC enables parties to carry out distributed computation on their private inputs.
 - each party produces a computation transcript (its own view).
