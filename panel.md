@@ -4,6 +4,13 @@ layout: default
 
 ## ZKP Panel Series
 
+### Table of Content
+
+* [Programming Languages in ZKP](#programming-languages-in-zkp) 
+* [Compiler and Composability in ZKP](#compiler-and-composability-in-zkp) 
+* [Applications of ZKP](#applications-of-zkp) 
+* [Security of ZK Systems](#security-of-zk-systems)
+
 ### Programming Languages in ZKP
 
 - Daniel Lubarov (Co-founder of Mir Protocol)
