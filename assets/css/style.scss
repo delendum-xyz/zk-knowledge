@@ -41,3 +41,11 @@ header{
 ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 3px white;
 }
+
+table{
+  overflow: visible;
+  @media (max-width: 600px) {
+    overflow: scroll;
+
+  }
+}

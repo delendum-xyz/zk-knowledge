@@ -506,12 +506,12 @@ layout: default
     - **Binding** - It is impossible (or impractically difficult) to open a commitment to a different value that it was created with
 
 #### Pedersen Commitments
-- Let $G$ and $H$ be two public generators for a large group where the discrete log is hard.
-- For an input, $x$, and hidden random value, $r$, the Pedersen commitment is $comm(x) = xG + rH$
-- The commitment is opened by revealing $x$ and $r$
+- Let $$G$$ and $$H$$ be two public generators for a large group where the discrete log is hard.
+- For an input, $$x$$, and hidden random value, $$r$$, the Pedersen commitment is $$comm(x) = xG + rH$$
+- The commitment is opened by revealing $$x$$ and $$r$$
 - These have some cool properties compared with hash commitments:
-    - **Additively Homomorphic:** $comm(a) + comm(b) = comm(a+b)$
-    - **Batchable:** $x_1G_1 + x_2G_2 + ... + rH = \vec{x}\vec{G} + rH$
+    - **Additively Homomorphic:** $$comm(a) + comm(b) = comm(a+b)$$
+    - **Batchable:** $$x_1G_1 + x_2G_2 + ... + rH = \vec{x}\vec{G} + rH$$
 - Low-level tech: discrete log group
 - Assumptions: discrete log
 - Resources:
@@ -521,12 +521,12 @@ layout: default
 #### Kate Commitments (KZG)
 - A type of polynomial commitment scheme that employs structured reference string (SRS) and require trusted setup, thus producing toxic waste
 - The verifier asks "what is the value of the polynomial at z"
-- The prover responds with $y$ and a proof $h(s)$ using:
-    - the polynomial $f()$
-    - the commitment - $f(s)$ where $s$ is a secret point (toxic waste)
-    - the proof - $h(s)$
-    - the coordinates $z, y$
-- The verifier is able to convince themselves this is true even if they don’t know $f()$
+- The prover responds with $$y$$ and a proof $$h(s)$$ using:
+    - the polynomial $$f()$$
+    - the commitment - $$f(s)$$ where $$s$$ is a secret point (toxic waste)
+    - the proof - $$h(s)$$
+    - the coordinates $$z$$, $$y$$
+- The verifier is able to convince themselves this is true even if they don’t know $$f()$$
 - Require pairing-friendly curves to multiple elliptic curve points
 - Low-level tech: pairing group
 - Assumptions: discrete log + secure bilinear pairing
@@ -584,16 +584,17 @@ layout: default
     - Paper: https://eprint.iacr.org/2019/1229.pdf
 
 
-#### Commitments Schemes Comparison
-|Scheme|Pedersen|KZG|IPA|FRI|DARK|
-|---|---|---|---|---|---|
-| Type| Scalar | Polynomial| Polynomial | Polynomial| Polynomial|
-| Low-level tech | Discrete log group | Pairing group | Discrete log group | Hash function | Unknown order group |
-| Setup     | $G,H$ generator points and random scalar $r$ | $G1$,$G2$ groups, $g1$,$g2$ generators, $e$ pairing function, $s_k$ secret value in $F$ | $G$ elliptic curve, $g^n$ independent elements in $G$ | $H$ hash function, $w$ unity root | $N$ unknown order, $g$ random in $N$, $q$ large integer |
-| Commitment | $aG+rH$ | $(a_0s^0+...a_ns^n)g_1$ | $a_0g_0+...+a_ng_n$ | $H(f(w^0), ..., f(w^n))$ | $(a_0q^0+...a_nq^n)g$ |
-| Proof size | $O(N)$ | $O(1)$ | $O(log(N))$ | $O(log^2(N))$ | $O(log(N))$ |
-| Verify time | $O(N)$ | $O(1)$ | $O(log(N))$ | $O(log^2(N))$ | $O(N)$ |
-| Prove time | $O(N)$ | $O(N)$ | $O(N)$ | $O(N*log^2(N))$ | $O(N)$ |
+#### Commitment Schemes Comparison
+
+| Scheme         | Pedersen                                         | KZG                                                                                                     | IPA                                                         | FRI                                    | DARK                                                            |
+|----------------|--------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------|-----------------------------------------------------------------|
+| Type           | Scalar                                           | Polynomial                                                                                              | Polynomial                                                  | Polynomial                             | Polynomial                                                      |
+| Low-level tech | Discrete log group                               | Pairing group                                                                                           | Discrete log group                                          | Hash function                          | Unknown order group                                             |
+| Setup          | $$G,H$$ generator points and random scalar $$r$$ | $$G1$$, $$G2$$ groups, $$g1$$, $$g2$$ generators, $$e$$ pairing function, $$s_k$$ secret value in $$F$$ | $$G$$ elliptic curve, $$g^n$$ independent elements in $$G$$ | $$H$$ hash function, $$w$$ unity root  | $$N$$ unknown order, $$g$$ random in $$N$$, $$q$$ large integer |
+| Commitment     | $$aG+rH$$                                        | $$(a_0s^0+...a_ns^n)g_1$$                                                                               | $$a_0g_0+...+a_ng_n$$                                       | $$H(f(w^0), ..., f(w^n))$$             | $$(a_0q^0+...a_nq^n)g$$                                         |
+| Proof size     | $$O(N)$$                                         | $$O(1)$$                                                                                                | $$O(log(N))$$                                               | $$O(log^2(N))$$                        | $$O(log(N))$$                                                   |
+| Verify time    | $$O(N)$$                                         | $$O(1)$$                                                                                                | $$O(log(N))$$                                               | $$O(log^2(N))$$                        | $$O(N)$$                                                        |
+| Prove time     | $$O(N)$$                                         | $$O(N)$$                                                                                                | $$O(N)$$                                                    | $$O(N*log^2(N))$$                      | $$O(N)$$                                                        |
 
 ### Bulletproofs
 - Short NIZK that requires no trusted setup.
@@ -602,9 +603,9 @@ layout: default
 - Assumptions: discrete log.
 
 #### Performance:
-- Prover time: $O(N * log(N))$
-- Verifier time: $O(N)$
-- Proof size: $O(log(N))$
+- Prover time: $$O(N * log(N))$$
+- Verifier time: $$O(N)$$
+- Proof size: $$O(log(N))$$
 - Works best with `dalek` curve having a Ristretto group (a compressed group of Ed25519 points).
 
 #### Application scope:
@@ -691,9 +692,9 @@ layout: default
 - Allows to choose (codewords rate):
     - fewer rows => fast prover,
     - fewer columns and constraints => fast verifier.
-- Prover time: $O(N * log(N))$
-- Verifier time: $O(1)$ > PLONK+KZG > Groth'16
-- Proof size: $O(log(N)$
+- Prover time: $$O(N * log(N))$$
+- Verifier time: $$O(1)$$ > PLONK+KZG > Groth'16
+- Proof size: $$O(log(N)$$
 
 #### Application scope:
 - Arbitrary verifiable computation;
@@ -735,9 +736,9 @@ layout: default
 - Assumptions: collision-resistant hash function
 
 #### Performance:
-- Prover time: $O(log^2(N))$ - 300ms/20s (depending on the codewords rate)
-- Verifier time: $O(log^2(N))$
-- Proof size: $O(N*log^2(N))$ - 500kb/43kb (depending on the codewords rate)
+- Prover time: $$O(log^2(N))$$ - 300ms/20s (depending on the codewords rate)
+- Verifier time: $$O(log^2(N))$$
+- Proof size: $$O(N*log^2(N))$$ - 500kb/43kb (depending on the codewords rate)
 
 #### Application scope:
 - Recursive proof composition
@@ -771,7 +772,7 @@ layout: default
 - **Important observation #2:** if only a subset of shares is revealed, then the secret remains unknown.
 
 #### Overview:
-- The prover simulates an MPC protocol "in their head", which computes $f(x)$ on a private input $x$ shared among $n$ virtual parties.
+- The prover simulates an MPC protocol "in their head", which computes $$f(x)$$ on a private input $$x$$ shared among $$n$$ virtual parties.
 - The verifier can then ask to reveal a subset of views, which isn't enough to recover private inputs, but gives some confidence that the probability of not seeing the inconsistency is small.
 - It's not small enough, so we need to repeat this interaction multiple times (~300).
 - This can then be made non-interactive by doing this in parallel and applying Fiat-Shamir transform.
@@ -782,10 +783,10 @@ layout: default
 - Above innovations allow to easily compile arbitrary program into the verifiably computation circuit.
 
 #### Performance:
-- Prover time: $O(n)$ - much less than with SNARKs
-- Verifier time: $O(n)$
-- Proof size: $O(n)$
-- The overhead of doing computation verifiably is much lower ($1/{n_{reps}*n_{parties}}$ => ~1/600) than that of SNARKs (~1/millions).
+- Prover time: $$O(n)$$ - much less than with SNARKs
+- Verifier time: $$O(n)$$
+- Proof size: $$O(n)$$
+- The overhead of doing computation verifiably is much lower ($$1/{n_{reps}*n_{parties}}$$ => ~1/600) than that of SNARKs (~1/millions).
 - Additions are free, but multiplications needed to be simulated many times.
 - With pre-processing it's possible to reduce size and verifier complexity at the prover's expense.
 
