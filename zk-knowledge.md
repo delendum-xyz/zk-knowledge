@@ -496,7 +496,7 @@ layout: default
 - There are different ways to axiomatize a problem to prove it.  Some categories are denotational semantics, axiomatic semantics, and operational semantics.  Operational semantics is particularly useful for proving things about programs
 - If you write a specification of a computation in a high-level formal language and compile it to a constraint system using a verified or verifying compiler, that is called correct by construction.  If you take an existing constraint system and you try to prove properties about it (up to and including soundness and completeness) with respect to a specification in a high-level formal language, that is called post-hoc verification
 
-## Proof systems
+## Proof Systems
 
 ### Background - Commitment Schemes
 - Allows one party to commit to some data by publishing a commitment
@@ -759,6 +759,7 @@ layout: default
 
 ### Resources
 - [https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf](https://github.com/mir-protocol/plonky2/blob/main/plonky2/plonky2.pdf)
+- [https://proxima-one.github.io/maru/background-knowledge/plonky2.html](https://proxima-one.github.io/maru/background-knowledge/plonky2.html)
 
 
 ### MPC-in-the-head
