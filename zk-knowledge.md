@@ -7,6 +7,127 @@ layout: default
   <p align="center">An ongoing knowledge base for ZKP domain knowledge.</p>
 </div>
 
+## Historical Overview
+
+### Foundations of zkSNARKs
+
+This is an overview of foundational papers relevant to zkSNARKs. It’s mostly based on [presentations](https://twitter.com/stonecoldpat0/status/1017778014841602048/photo/1) by Jens Groth at the IC3 Bootcamp at Cornell University in July 2018 and at the 2nd [ZKProof Standards workshop](https://www.youtube.com/watch?v=X-z3JYlFdzs) in Berkeley, CA in April 2019.
+
+Jens talks about three recurring motifs:
+
+1. Language - what statements can we prove
+2. Security - what are our assumptions, unconditional soundness vs. unconditional zero knowledge
+3. Efficiency - prover, verifier computation, interaction, setup size, succinctness
+
+The following papers in theoretical computer science/cryptography set the boundaries of what we are working with (note that some papers deal with more than one aspect of ZKPs):
+
+#### Theory
+
+[GMR85] Goldwasser, Micali, Rackoff [[The Knowledge Complexity of Interactive Proof Systems]](https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Proof%20Systems/The_Knowledge_Complexity_Of_Interactive_Proof_Systems.pdf)
+
+- defines zero-knowledge proofs in terms of completeness, soundness, zero-knowledge
+- gives an interactive zero-knowledge proof system
+
+#### Language
+
+[GMW91] Goldreich, Micali, Wigderson [[Proofs that Yield Nothing But their Validity or All Languages in NP have Zero-Knowledge Proofs]](https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Zero%20Knowledge/Proofs_That_Yield_Nothing_But_Their_Validity_or_All_Languages_in_NP_Have_Zero-Knowledge_Proof_Systems.pdf)
+
+- look at graph 3-coloring problem
+- prove that NP-complete languages have proof systems
+
+#### Security
+
+[GMW91] Goldreich, Micali, Wigderson [[Proofs that Yield Nothing But their Validity or All Languages in NP have Zero-Knowledge Proofs]](https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Zero%20Knowledge/Proofs_That_Yield_Nothing_But_Their_Validity_or_All_Languages_in_NP_Have_Zero-Knowledge_Proof_Systems.pdf)
+
+- one-way functions suffice for computational zero-knowledge
+
+[BC86] Brassard, Crépeau [[All-or-Nothing Disclosure of Secrets]](http://crypto.cs.mcgill.ca/~crepeau/PDF/ASPUBLISHED/BCR86.pdf)
+
+- you can get perfect (unconditional) zero-knowledge as opposed to computational zero-knowledge
+
+[BCC88] Brassard, Chaum, Crépeau [[Minimum Disclosure Proofs of Knowledge]](http://crypto.cs.mcgill.ca/~crepeau/PDF/ASPUBLISHED/BCC88.pdf)
+
+- look at zero-knowledge against unbounded adversaries
+
+#### Efficiency
+
+[BFM88] Blum, de Santis, Micali, Persiano [[Non-interactive Zero-knowledge]](https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Zero%20Knowledge/Noninteractive_Zero-Knowkedge.pdf) 
+
+- CRS (common reference string) for non-interactive ZKPs
+
+[Kilian92] Kilian [[A note on efficient zero-knowledge proofs and arguments]](https://people.csail.mit.edu/vinodv/6892-Fall2013/efficientargs.pdf)
+
+- how to get succinct interactive proofs
+
+#### Pairing-based cryptography
+
+Later on we have some ideas from pairing-based cryptography:
+
+[BGN05] Dan Boneh, Eu-Jin Goh, Kobbi Nissim [[Evaluating 2-DNF Formulas on Ciphertexts]](https://crypto.stanford.edu/~dabo/papers/2dnf.pdf)
+
+- pairing-based double-homomorphic encryption scheme
+
+#### Non-interactive zero-knowledge
+
+From there, we can ask, how to get perfect non-interactive zero-knowledge?
+
+[GOS06] Jens Groth, Rafail Ostrovsky, Amit Sahai [[Perfect Non-Interactive Zero Knowledge for NP]](https://eprint.iacr.org/2005/290.pdf)
+
+- efficient, uses circuit-SAT
+
+[GS08] Jens Groth, Amit Sahai [[Efficient Non-Interactive Proof Systems for Bilinear Groups]](https://eprint.iacr.org/2007/155.pdf)
+
+- efficient, uses a practical language (R1CS)
+
+[Gro10] Jens Groth [[Short pairing-based non-interactive zero-knowledge arguments]](https://www.iacr.org/archive/asiacrypt2010/6477323/6477323.pdf)
+
+- preprocessing zk-SNARKs
+- power knowledge of exponent(KoE) assumption
+- universal CRS, works for any circuit
+
+#### Succinctness
+
+And then, how to get succinctness?
+
+[GW11] Gentry, Wichs [[Separating Succinct Non-Interactive Arguments From All Falsifiable Assumptions]](https://eprint.iacr.org/2010/610.pdf)
+
+- SNARG = Succinct non-interactive argument
+- justifies need for KoE assumption
+
+[BCCT12] Bitansky, Canetti, Chiesa, Tromer [[From extractable collision resistance to succinct non-Interactive arguments of knowledge, and back again]](https://eprint.iacr.org/2011/443.pdf)
+
+- zk-SNARK
+- verifier time polynomial in statement size (ease of verification)
+
+[GGPR13] Gennaro, Gentry, Parno, Raykova [[Quadratic Span Programs and Succinct NIZKs without PCPs]](https://eprint.iacr.org/2012/215.pdf)
+
+- quadratic span programs, quadratic arithmetic programs
+- specialized CRS, tailored to specific circuit
+
+This is a graph of various constructions in this [video](https://www.youtube.com/watch?v=X-z3JYlFdzs&t=668s) at 34:00
+
+#### Implementations
+
+And at this point we begin to see implementations:
+
+[PHGR13] Parno, Gentry, Howell, Raykova [[Pinocchio: Nearly Verifiable Practical Computation]](https://eprint.iacr.org/2013/279.pdf)
+
+Relating back to the three motifs, Jens talks about the following areas for improvement with regard to each of the three motifs:
+
+1. Language: Pairing-friendly languages, interoperability between languages
+
+2. Security: Setup - multi-crs, mpc-generated, updatable; Formal verification
+
+3. Efficiency: Asymmetric pairings, commit-and-prove
+
+#### Reference Texts:
+
+- Introduction to Modern Cryptography by Katz, Lindell
+- Algebra by M. Artin
+- Abstract Algebra by Dummit and Foote
+- Introduction To Commutative Algebra, by M. Atiyah and I. Macdonald
+- Arithmetic of Elliptic Curves by J. Silverman
+
 ## Hardware Acceleration
 
 ### Leading Problem
