@@ -7,6 +7,10 @@ layout: default
   <p align="center">An ongoing knowledge base for ZKP domain knowledge.</p>
 </div>
 
+### Goal
+
+This knowledge base maintains the information related to state of the art research on ZKP, open questions, ideas, applications, and future development directions. It also provides a platform for people to share knowledge, expertise and best engineering practice
+
 ### News
 
 - **Oct 31 - Nov 1 2022** The Crypto Economics Security Conference (CESC) [[Website]](https://cesc.io/)
