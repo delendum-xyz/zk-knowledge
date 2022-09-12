@@ -4,6 +4,8 @@ layout: default
 
 ## ZKP Panel Series
 
+ZKP Panel Series invite speakers from different ecosystems who are taking different methodologies and exploring different constructions to come together and discuss the possibilities of a more compatible, unified, and standardized framework
+
 ### Table of Content
 
 * [Programming Languages in ZKP](#programming-languages-in-zkp) 
