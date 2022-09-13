@@ -34,6 +34,7 @@ This knowledge base maintains the information related to state of the art resear
 - [Austin Liu](https://www.linkedin.com/in/austin-liu-83844369/), Cornell & Caltech
 - [Kelly Olson](https://www.linkedin.com/in/kelly-olson-281497144/), Supranational
 - [Timofey Luin](https://github.com/timoth-y), ChainSafe
+- [Ole Spjeldnæs](https://www.linkedin.com/in/ole-spjeldn%C3%A6s-34a4a0122/), ETH Zürich
 
 ### Contribution Guidelines
 
