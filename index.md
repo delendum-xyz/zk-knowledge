@@ -22,6 +22,7 @@ This knowledge base maintains the information related to state of the art resear
 - **Aug 12 2022** Online Panel: Applications of ZKP [[Youtube link]](https://www.youtube.com/watch?v=m5WiIOC3xcM&t=148s)
 - **Aug 29 2022** Delendum ZK Meetup at SBC [[Event link]](https://www.eventbrite.com/e/delendum-zk-meetup-at-sbc-tickets-396799998477)
 - **Sep 08 2022** Online Panel: Security of ZK Systems [[Youtube link]](https://www.youtube.com/watch?v=SxI8uNBp05k)
+- **Oct 06 2022** Online Panel: The Frontiers of zkMPC [[Registration link]](https://www.eventbrite.com/e/the-frontiers-of-zkmpc-tickets-422904818697)
 
 ### Contributors
 
@@ -35,6 +36,7 @@ This knowledge base maintains the information related to state of the art resear
 - [Kelly Olson](https://www.linkedin.com/in/kelly-olson-281497144/), Supranational
 - [Timofey Luin](https://github.com/timoth-y), ChainSafe
 - [Ole Spjeldnæs](https://www.linkedin.com/in/ole-spjeldn%C3%A6s-34a4a0122/), ETH Zürich
+- [Christopher Goes](https://github.com/cwgoes), Anoma/Heliax
 
 ### Contribution Guidelines
 
