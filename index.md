@@ -22,7 +22,9 @@ This knowledge base maintains the information related to state of the art resear
 - **Aug 12 2022** Online Panel: Applications of ZKP [[Youtube link]](https://www.youtube.com/watch?v=m5WiIOC3xcM&t=148s)
 - **Aug 29 2022** Delendum ZK Meetup at SBC [[Event link]](https://www.eventbrite.com/e/delendum-zk-meetup-at-sbc-tickets-396799998477)
 - **Sep 08 2022** Online Panel: Security of ZK Systems [[Youtube link]](https://www.youtube.com/watch?v=SxI8uNBp05k)
-- **Oct 06 2022** Online Panel: The Frontiers of zkMPC [[Registration link]](https://www.eventbrite.com/e/the-frontiers-of-zkmpc-tickets-422904818697)
+- **Oct 06 2022** Online Panel: The Frontiers of zkMPC [[Youtube link]](https://www.youtube.com/watch?v=uKDeaQjB9bk)
+- **Nov 03 2022** Twitter Space: What to build next in Zero Knowledge [[Recording]](https://twitter.com/DelendumV/status/1588228307476045824?s=20&t=3zn6ZaqNA6BdMsY_zraXNQ)
+- **Nov 18 2022** Online Panel: Private Execution on Blockchain [[Registration Link]](https://www.eventbrite.com/e/private-execution-on-blockchain-tickets-441954697397)
 
 ### Contributors
 
@@ -30,6 +32,7 @@ This knowledge base maintains the information related to state of the art resear
 - [Daniel Lubarov](http://daniel.lubarov.com/), Polygon Zero & Delendum
 - [Shashank Agrawal](https://shashank-agrawal.com/), Coinbase & Delendum
 - [Gautam Botrel](https://www.linkedin.com/in/gautam-botrel/), ConsenSys & Delendum
+- [James Stearn](https://www.linkedin.com/in/james-stearn-9b67a3230/?originalSubdomain=uk), CISPA & Delendum
 - [Eric McCarthy](https://www.kestrel.edu/people/mccarthy/), Kestrel Institute
 - [Alessandro Coglio](https://www.kestrel.edu/people/coglio/), Kestrel Institute
 - [Austin Liu](https://www.linkedin.com/in/austin-liu-83844369/), Cornell & Caltech
@@ -37,6 +40,7 @@ This knowledge base maintains the information related to state of the art resear
 - [Timofey Luin](https://github.com/timoth-y), ChainSafe
 - [Ole Spjeldnæs](https://www.linkedin.com/in/ole-spjeldn%C3%A6s-34a4a0122/), ETH Zürich
 - [Christopher Goes](https://github.com/cwgoes), Anoma/Heliax
+- [Mikerah Quintyne-Collins](https://github.com/Mikerah), Hashcloak
 
 ### Contribution Guidelines
 
