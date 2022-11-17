@@ -33,12 +33,12 @@ This knowledge base maintains the information related to state of the art resear
 - [Shashank Agrawal](https://shashank-agrawal.com/), Coinbase & Delendum
 - [Gautam Botrel](https://www.linkedin.com/in/gautam-botrel/), ConsenSys & Delendum
 - [James Stearn](https://www.linkedin.com/in/james-stearn-9b67a3230/?originalSubdomain=uk), CISPA & Delendum
+- [Ole Spjeldnæs](https://www.linkedin.com/in/ole-spjeldn%C3%A6s-34a4a0122/), ETH Zürich & Delendum
 - [Eric McCarthy](https://www.kestrel.edu/people/mccarthy/), Kestrel Institute
 - [Alessandro Coglio](https://www.kestrel.edu/people/coglio/), Kestrel Institute
 - [Austin Liu](https://www.linkedin.com/in/austin-liu-83844369/), Cornell & Caltech
 - [Kelly Olson](https://www.linkedin.com/in/kelly-olson-281497144/), Supranational
 - [Timofey Luin](https://github.com/timoth-y), ChainSafe
-- [Ole Spjeldnæs](https://www.linkedin.com/in/ole-spjeldn%C3%A6s-34a4a0122/), ETH Zürich
 - [Christopher Goes](https://github.com/cwgoes), Anoma/Heliax
 - [Mikerah Quintyne-Collins](https://github.com/Mikerah), Hashcloak
 
