@@ -25,8 +25,9 @@ The following papers in theoretical computer science/cryptography set the bounda
 
 [GMR85] Goldwasser, Micali, Rackoff [[The Knowledge Complexity of Interactive Proof Systems]](https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Proof%20Systems/The_Knowledge_Complexity_Of_Interactive_Proof_Systems.pdf)
 
-- defines zero-knowledge proofs in terms of completeness, soundness, zero-knowledge
-- gives an interactive zero-knowledge proof system
+- The paper which introduced the notion of interactive proofs, which constitute the most basic primitive underlying all modern zero-knowledge proof and argument systems
+- GMR also define zero knowledge within the context of IP, along with notions such as completeness and soundness, which are fundamental for the theory of IP
+- As a first use case, the others present zero knowledge interactive proofs for quadratic (non)residuosity
 
 #### Language
 
