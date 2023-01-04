@@ -1290,10 +1290,10 @@ by default.
 
 #### Pedersen Commitments
 - Let $$G$$ and $$H$$ be two public generators for a large group where the discrete log is hard.
-- For an input, $$x$$, and hidden random value, $$r$$, the Pedersen commitment is $$comm(x) = xG + rH$$
+- For an input, $$x$$, and hidden random value, $$r$$, the Pedersen commitment is $$comm(x) = G^x + H^r$$
 - The commitment is opened by revealing $$x$$ and $$r$$
 - These have some cool properties compared with hash commitments:
-    - **Additively Homomorphic:** $$comm(a) + comm(b) = comm(a+b)$$
+    - **Additively Homomorphic:** $$comm(a) x comm(b) = comm(a+b)$$
     - **Batchable:** $$x_1G_1 + x_2G_2 + ... + rH = \vec{x}\vec{G} + rH$$
 - Low-level tech: discrete log group
 - Assumptions: discrete log
